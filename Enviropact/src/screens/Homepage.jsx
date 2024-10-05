@@ -9,7 +9,7 @@ function Homepage() {
       <div className="bg-green-950">
         <nav className="p-10 h-8">
           <ul>
-            <li><img src="../images/tree-icon.svg" className="float-left px-5"></img></li>
+            <li><img src="../../images/tree-icon.svg" className="float-left px-5"></img></li>
             <li className="py-4 float-left text-xl font-bold text-zinc-300 geist-reg">
               Enviro-Pact
             </li>
@@ -44,7 +44,7 @@ function Homepage() {
           </div>
           </body>
           <img
-            src="../images/swoop-hands.svg"
+            src="../../images/swoop-hands.svg"
             className="absolute top-10 bottom-0 left-0"
           ></img>
       </div>
