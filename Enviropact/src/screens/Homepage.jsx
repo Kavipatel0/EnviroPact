@@ -11,7 +11,7 @@ function Homepage() {
           <ul>
             <li>
               <img
-                src="../images/tree-icon.svg"
+                src="../../assets/images/tree-icon.svg"
                 className="float-left px-5"
               ></img>
             </li>
@@ -48,7 +48,7 @@ function Homepage() {
             </Button>
           </div>
           <img
-            src="../../assets/images/earth.jpg"
+            src="../../assets/images/swoop-hands.svg"
             className="absolute top-10 bottom-0 left-0"
           ></img>
         </body>
