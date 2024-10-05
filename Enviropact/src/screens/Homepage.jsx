@@ -9,7 +9,12 @@ function Homepage() {
       <div className="bg-green-950">
         <nav className="p-10 h-8">
           <ul>
-            <li><img src="../../assets/images/tree-icon.svg" className="float-left px-5"></img></li>
+            <li>
+              <img
+                src="../../assets/images/tree-icon.svg"
+                className="float-left px-5"
+              ></img>
+            </li>
             <li className="py-4 float-left text-xl font-bold text-zinc-300 geist-reg">
               Enviro-Pact
             </li>
@@ -26,13 +31,17 @@ function Homepage() {
         </nav>
 
         <body className="min-h-screen h-screen relative">
-          <div className="p-12 py-48 max-w-5xl">
-            <h1 className="font-bold text-8xl text-zinc-300 geist-reg">
-              Preserve your pact with the Earth.
+          <div className="p-12 py-40 max-w-full">
+            <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
+              Preserve your pact
+              <br />
+              with the Earth.
             </h1>
-            <div className="pb-5 text-2xl max-w-2xl text-lime-500 geist-reg">
-              A new way to engage with your community and better the Earth
-              together, one trash bag at a time.
+            <div className="pb-5 text-lg max-w-full">
+              <p className="text-lime-500 text-base geist-reg">
+                A new way to engage with your community and better
+                <br /> the Earth together, one trash bag at a time.
+              </p>
             </div>
             <Button
               type="primary"
@@ -42,11 +51,11 @@ function Homepage() {
               Search Events →
             </Button>
           </div>
-          </body>
-          <img
-            src="../../assets/images/swoop-hands.svg"
-            className="absolute top-10 bottom-0 left-0"
-          ></img>
+        </body>
+        {/* <img
+          src="../../assets/images/swoop-hands.svg"
+          className="absolute top-10 bottom-0 left-0"
+        ></img> */}
       </div>
     </>
   );
