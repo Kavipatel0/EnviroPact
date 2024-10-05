@@ -1,14 +1,17 @@
-import { useState } from "react";
-import "./App.css";
-import "./screens/Homepage";
+// App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Homepage from './screens/Homepage'; // Import your Homepage component
+import Eventspage from './screens/Eventspage'; // Import your Events page component
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <>
-      <Homepage />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/events" element={<Eventspage />} />
+      </Routes>
+    </Router>
   );
 }
 

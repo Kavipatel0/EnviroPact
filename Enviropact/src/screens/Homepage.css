@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'Geist-Bold';
+    src: url(../fonts/GeistMono-Bold.otf);
+}
+
+@font-face {
+    font-family: 'Geist-Medium';
+    src: url(../fonts/GeistMono-Medium.otf);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: #003310;
+}
+
+#navbar {
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    
+    font-family: Geist-Bold;
+    color: white;
+}
+
+#navbar ul {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    list-style: none;
+}
+
+
+#signIn-btn {
+    background: #C7EF4E;
+    color: #003310;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: Geist-Bold;
+    cursor: pointer;
+}
+
+#hero {
+    margin-top: 100px;
+    margin-left: 20px;
+    height:300px;
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    font-family: Geist-Medium;
+}
+
+#hero h1 {
+    font-size: 60px;
+    color: white;
+}
+
+#hero p {
+    font-size: 20px;
+    color: #C7EF4E;
+}
+
+#searchEvents-btn {
+    background: #C7EF4E;
+    color: #003310;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: Geist-Bold;
+    cursor: pointer;
+    width: fit-content;
+}
+
+#WaveDecoration {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
