@@ -16,7 +16,7 @@ function Homepage() {
             <li>
               <Button
                 type="primary"
-                className="float-right text-black"
+                className="p-5 float-right text-lg text-black"
                 style={{ background: "rgb(132 204 22)" }}
               >
                 Sign Up
@@ -26,27 +26,27 @@ function Homepage() {
         </nav>
 
         <body className="min-h-screen h-screen relative">
-          <div className="p-12 py-48 max-w-2xl">
-            <h1 className="text-zinc-300 font-bold text-5xl max-w-50 geist-reg">
+          <div className="p-12 py-48 max-w-5xl">
+            <h1 className="font-bold text-8xl text-zinc-300 geist-reg">
               Preserve your pact with the Earth.
             </h1>
-            <div className="text-lime-500 pb-5 geist-reg">
+            <div className="pb-5 text-2xl max-w-2xl text-lime-500 geist-reg">
               A new way to engage with your community and better the Earth
               together, one trash bag at a time.
             </div>
             <Button
               type="primary"
-              className="text-black"
+              className="p-5 text-lg text-black"
               style={{ background: "rgb(132 204 22)" }}
             >
               Search Events →
             </Button>
           </div>
+          </body>
           <img
             src="../images/swoop-hands.svg"
             className="absolute top-10 bottom-0 left-0"
           ></img>
-        </body>
       </div>
     </>
   );
