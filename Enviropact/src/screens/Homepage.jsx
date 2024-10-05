@@ -9,7 +9,10 @@ function Homepage() {
       <div className="bg-green-950">
         <nav className="p-10 h-8">
           <ul>
-            <li className="float-left text-zinc-300">Enviro-Pact</li>
+            <li><img src="../images/tree-icon.svg" className="float-left px-5"></img></li>
+            <li className="py-4 float-left text-xl font-bold text-zinc-300 geist-reg">
+              Enviro-Pact
+            </li>
             <li>
               <Button
                 type="primary"
@@ -23,11 +26,11 @@ function Homepage() {
         </nav>
 
         <body className="min-h-screen h-screen relative">
-          <div className="p-12">
+          <div className="p-12 py-48 max-w-2xl">
             <h1 className="text-zinc-300 font-bold text-5xl max-w-50 geist-reg">
               Preserve your pact with the Earth.
             </h1>
-            <div className="text-lime-500 pb-5">
+            <div className="text-lime-500 pb-5 geist-reg">
               A new way to engage with your community and better the Earth
               together, one trash bag at a time.
             </div>
