@@ -24,7 +24,7 @@ function Homepage() {
 
         <body className="min-h-screen h-screen relative">
           <div className="p-12">
-            <h1 className="text-zinc-300 font-bold text-5xl max-w-50">
+            <h1 className="text-zinc-300 font-bold text-5xl max-w-50 geist-reg">
               Preserve your pact with the Earth.
             </h1>
             <div className="text-lime-500 pb-5">
