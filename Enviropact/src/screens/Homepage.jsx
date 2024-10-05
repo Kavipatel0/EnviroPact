@@ -44,15 +44,21 @@ function Homepage() {
 
   return (
     <>
-      <div>
-        <nav className="bg-transparent flex justify-between items-center px-20 py-4 z-10">
-          <ul className="flex items-center justify-center">
-            <li
-              onClick={navigateHome}
-              className="flex items-center justify-center text-lg text-black geist-reg hover:cursor-pointer"
-            >
-              <img src="../../assets/images/tree-icon.svg" className="px-2" />
-              <p>Enviro-Pact</p>
+      <div className="bg-green-950">
+        <nav className="p-10 h-8">
+          <ul>
+            <li><img src="../images/tree-icon.svg" className="float-left px-5"></img></li>
+            <li className="py-4 float-left text-xl font-bold text-zinc-300 geist-reg">
+              Enviro-Pact
+            </li>
+            <li>
+              <Button
+                type="primary"
+                className="float-right text-black"
+                style={{ background: "rgb(132 204 22)" }}
+              >
+                Sign Up
+              </Button>
             </li>
           </ul>
           <Button
