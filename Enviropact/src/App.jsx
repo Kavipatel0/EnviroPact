@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import "./screens/Homepage";
+import Homepage from "./screens/Homepage";
 import Homepage from "./screens/Homepage";
 
 function App() {
