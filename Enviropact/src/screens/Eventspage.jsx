@@ -1,17 +1,13 @@
 import React from "react";
-import "./Eventspage.css"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Button, Input, Modal } from "antd";
 import { signInWithGoogle } from "../auth/authService";
 import  { useState, useEffect } from "react";
-import logo from "../assets/Logo.png";
 import EventCard from "../components/EventCard";
 import CreateEventBtn from "../components/CreateEventBtn";
 
 const { Search } = Input;
-
-const onSearch = (value, _e, info) => console.log(info?.source, value);
 
 
 function Eventspage() {
@@ -49,44 +45,85 @@ function Eventspage() {
     
   return (
     <div>
-      <div id="eventspage-navbar">
-        <img id="logo" src={logo} onClick={handleSearchEvents}/>
-        <ul>
-          <li onClick={handleSearchEvents}>Home</li>
-          <li></li>
-          <li>Contact</li>
-          {!isSignedIn && (
-            <li>
-              <Button type="primary" id="signIn-btn" onClick={handleSignIn}>
-                Sign In
-              </Button>
-            </li>
-          )}
+      <nav className="bg-transparent flex justify-between items-center px-10 py-5 z-10">
+        <ul className="flex items-center justify-center space-x-5">
+          <li>
+            <img src="../../assets/images/tree-icon.svg" />
+          </li>
+          <li className="text-lg text-black geist-reg">Enviro-Pact</li>
         </ul>
-      </div>
-        <div id="eventspage-hero">
-            <h1>Find events in your area.</h1>
-            <p>Make an impact. Plant your seed.</p>
+        {!isSignedIn && (
+        <Button
+          type="primary"
+          className="text-md text-black geist-reg"
+          style={{ background: "rgb(190, 242, 100)" }}
+        >
+          Sign In
+        </Button>
+        )}
+      </nav>
+
+      {/*Body*/}
+      <div className="bg-green-950 h-screen flex flex-col items-center justify-start gap-4 pt-10">
+        <img
+          className="w-40"
+          src="../../assets/images/hand-with-sapling.svg"
+          alt=""
+        />
+        {/*Header*/}
+        <div className="w-full flex flex-col items-center justify-center gap-4">
+          <h1 className="text-5xl text-white geist-reg">
+            Find events in your area.
+          </h1>
+          <p className="text-lg text-lime-300">
+            Make an impact. Plant your seed.
+          </p>
         </div>
-        <div id="eventspage-search-wrapper">
-            <Search
-                placeholder="input search text"
-                allowClear
-                enterButton="Search"
-                size="large"
-                onSearch={onSearch}
-                style={{width: "40%", minWidth: "300px"}}
+
+        {/*Searchbar*/}
+        <div className="flex items-center gap-4">
+          <Search
+            placeholder="search an event"
+            allowClear
+            enterButton={
+              <Button
+                className="text-sm"
+                style={{
+                  backgroundColor: "rgb(190, 242, 100)",
+                  borderColor: "rgb(190, 242, 100)",
+                  color: "black",
+                }}
+              >
+                Search
+              </Button>
+            }
+            size="large"
+            onSearch={() => {
+              alert("BELLO");
+            }}
+            style={{
+              width: 350,
+            }}
+          />
+          <Button
+            size="large"
+            className="flex items-center text-sm"
+            variant="filled"
+            style={{
+              backgroundColor: "rgb(190, 242, 100)",
+              borderColor: "rgb(190, 242, 100)",
+              color: "black",
+            }}
+          >
+            Create an event
+            <img
+              className="w-5"
+              src="../../assets/icons/calendar-icon.svg"
+              alt="calendar icon"
             />
-            <CreateEventBtn/>
+          </Button>
         </div>
-        <div id="eventspage-events-wrapper">
-          <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
-          <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
-          <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
-          <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
-          <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
-          <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
-        </div>
+      </div>
     </div>
   );
 }

@@ -1,12 +1,10 @@
 import React from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import "./Homepage.css";
-import wave from "../assets/HomePageWave.png";
-import { useNavigate } from "react-router-dom";
 import { Button } from "antd";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import { signInWithGoogle } from "../auth/authService";
 import  { useState, useEffect } from "react";
-import logo from "../assets/Logo.png";
 
 
 function Homepage() {
@@ -42,29 +40,52 @@ function Homepage() {
 
   return (
     <>
-      <div id="homepage-navbar">
-        <img src={logo} id="logo"/>
-        <ul>
-          <li>Why?</li>
-          <li>Events</li>
-          <li>Contact</li>
-          {!isSignedIn && (
+      <div>
+        <nav className="bg-transparent flex justify-between items-center px-20 py-5 z-10">
+          <ul className="flex items-center justify-center space-x-5">
             <li>
-              <Button type="primary" id="homepage-signIn-btn" onClick={handleSignIn}>
-                Sign In
-              </Button>
+              <img src="../../assets/images/tree-icon.svg" className="px-2" />
             </li>
+            <li className="text-lg text-black geist-reg">Enviro-Pact</li>
+          </ul>
+          {!isSignedIn && (
+          <Button
+            type="primary"
+            className="text-md text-black geist-reg"
+            style={{ background: "rgb(132 204 22)" }}
+            onClick={handleSignIn}
+          >
+            Sign In
+          </Button>
           )}
-        </ul>
+
+        </nav>
+
+          {/*Hero Page */}
+        <section className="min-h-screen bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
+          <div className="px-20 py-40 max-w-full">
+            <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
+              Preserve your pact
+              <br />
+              with the Earth.
+            </h1>
+            <div className="pb-5 text-lg max-w-full">
+              <p className="text-lime-500 text-base geist-reg">
+                A new way to engage with your community and better
+                <br /> the Earth together, one trash bag at a time.
+              </p>
+            </div>
+            <Button
+              type="primary"
+              className="p-5 text-lg text-black"
+              style={{ background: "rgb(132 204 22)" }}
+              onClick={handleSearchEvents}
+            >
+              Search Events →
+            </Button>
+          </div>
+        </section>
       </div>
-      <div id="homepage-hero">
-        <h1>Preserve your pact with the Earth.</h1>
-        <p>A new way to engage with your community and better the Earth together one trash bag at a time.</p>
-        <Button type="primary" id="homepage-searchEvents-btn" onClick={handleSearchEvents}>
-          Search Events
-        </Button>
-      </div>
-      <img src={wave} alt="Wave decoration" id="homepage-WaveDecoration" />
     </>
   );
 }

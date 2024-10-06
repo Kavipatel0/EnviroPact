@@ -1,5 +1,6 @@
 import { db } from "./firebase.js";
-import { collection, addDoc } from "firebase/firestore";
+import { collection, addDoc, updateDoc, arrayUnion, doc, increment, arrayRemove } from "firebase/firestore";
+
 
 // export const addDocumentTesting= async () => {
 //   try {
@@ -34,17 +35,35 @@ export const addEvent = async (title, organization, description, location, date,
   }
 }
 
-// export const addUserToEvent = async (eventID, user) => {
-//   try {
-//     const user = await addDoc(collection(db, "users"), {
-//       eventID
-//     });
-//     console.log("Added user to event")
-//   }
-//   catch (e) {
-//     console.error("Firestore could not add user to")
-//   }
-// }
+export const addUserToEvent = async (eventID, userID) => {
+  const event = doc(db, "events", eventID);
+  const user = doc(db, "users", userID);
+  try {
+    await updateDoc(event, {
+      usersAttending: arrayUnion(user.id),
+      rsvpCount: increment(1)
+    });
+    console.log("Updated usersAttending")
+  }
+  catch (e) {
+    console.error("Firestore could not update usersAttending")
+  }
+}
+
+export const removeUserFromEvent = async (eventID, userID) => {
+  const event = doc(db, "events", eventID);
+  const user = doc(db, "users", userID);
+  try {
+    await updateDoc(event, {
+      usersAttending: arrayRemove(user.id),
+      rsvpCount: increment(-1)
+    });
+    console.log("Removed user from usersAttending")
+  }
+  catch (e) {
+    console.error("Firestore could not update usersAttending")
+  }
+}
 
 // remove user from event funciton
 // resvp++ and add user to list of event

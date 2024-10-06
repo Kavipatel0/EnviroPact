@@ -2,11 +2,3 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  *,
-  *:after,
-  *:before {
-    padding: 0;
-    margin: 0;
-  }
-}
