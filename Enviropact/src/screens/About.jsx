@@ -2,10 +2,12 @@ import React from 'react'
 import { Button } from "antd";
 import { Card } from "antd";
 import { Divider } from "antd";
-import { motion} from "framer-motion"; 
+import { motion, useScroll, useTransform} from "framer-motion"; 
 
 function About() {
   const SLAK = "Team SLAK".split("");
+  const { scrollYProgress } = useScroll()
+  const fade = useTransform(scrollYProgress, [0, .5, 1], [0, 1, 0]);
 
   return (
     <div className="">
@@ -63,7 +65,7 @@ function About() {
               show: { 
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.25,
+                  duration: 1
                 },
                }, 
               }}
@@ -147,7 +149,7 @@ function About() {
               show: { 
                 opacity: 1,
                 transition: {
-                  staggerChildren: 0.25,
+                  duration: 1
                 },
                }, 
               }}
@@ -234,29 +236,49 @@ function About() {
           <Divider style={{ fontFamily: "geist-reg" }}>
             <h1 className="p-4 font-bold text-center text-black text-6xl geist-reg">Q&A</h1>
           </Divider>
+
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">Inspiration</h2>
-          <p className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg">
-            Placeholder Paragraph Text
-          </p>
+          <motion.p 
+            className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeIn"}}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </motion.p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">How It's Made</h2>
-          <p className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg">
+          <motion.p 
+            className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeIn"}}>
             For our front end, we built Enviro-pact using React.js, Tailwind CSS, and the AntDesign and Framer Motion libraries.
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </motion.p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">Challenges</h2>
-          <p className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg">
+          <motion.p 
+            className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeIn"}}>
             One of our main challenges was using Git. 
             What should have been a relatively simple process led to a lot of merge conflicts, resulting in a handful of branch resets. 
             WRITE MORE
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </motion.p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">What We Learned</h2>
-          <p className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg">
+          <motion.p 
+            className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1.2, ease: "easeIn"}}>
             This having been our first hackathon, we all learned a lot individually. 
             Depending on the member, it was a new language, library, or database.
             WRITE MORE
-          </p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          </motion.p>
         </div>
       </section>
     </div>
