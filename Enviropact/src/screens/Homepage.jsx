@@ -30,27 +30,30 @@ function Homepage() {
           </ul>
         </nav>
 
-        <body className="min-h-screen h-screen relative bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
-          <div className="p-12 py-40 max-w-full">
-            <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
-              Preserve your pact
-              <br />
-              with the Earth.
-            </h1>
-            <div className="pb-5 text-lg max-w-full">
-              <p className="text-lime-500 text-base geist-reg">
-                A new way to engage with your community and better
-                <br /> the Earth together, one trash bag at a time.
-              </p>
+        <body>
+          {/*Hero Page */}
+          <section className="min-h-screen bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
+            <div className="p-12 py-40 max-w-full">
+              <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
+                Preserve your pact
+                <br />
+                with the Earth.
+              </h1>
+              <div className="pb-5 text-lg max-w-full">
+                <p className="text-lime-500 text-base geist-reg">
+                  A new way to engage with your community and better
+                  <br /> the Earth together, one trash bag at a time.
+                </p>
+              </div>
+              <Button
+                type="primary"
+                className="p-5 text-lg text-black"
+                style={{ background: "rgb(132 204 22)" }}
+              >
+                Search Events →
+              </Button>
             </div>
-            <Button
-              type="primary"
-              className="p-5 text-lg text-black"
-              style={{ background: "rgb(132 204 22)" }}
-            >
-              Search Events →
-            </Button>
-          </div>
+          </section>
         </body>
       </div>
     </>
