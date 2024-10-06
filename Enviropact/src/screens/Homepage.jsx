@@ -38,6 +38,10 @@ function Homepage() {
     navigate("/events");
   };
 
+  const handleAbout = () => {
+    navigate("/About");
+  };
+
   return (
     <>
       <div>
@@ -48,6 +52,15 @@ function Homepage() {
             </li>
             <li className="text-lg text-black geist-reg">Enviro-Pact</li>
           </ul>
+          <Button
+              type="primary"
+              className="text-md text-black geist-reg"
+              style={{ background: "rgb(132 204 22)" }}
+              onClick={handleAbout}
+            >
+              ABOUT
+            </Button>
+
           {!isSignedIn && (
             <Button
               type="primary"
