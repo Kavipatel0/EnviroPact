@@ -3,26 +3,24 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Button, Input, Modal } from "antd";
 import { signInWithGoogle } from "../auth/authService";
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import EventCard from "../components/EventCard";
 import CreateEventBtn from "../components/CreateEventBtn";
 
 const { Search } = Input;
 
-
 function Eventspage() {
-
-    const [isSignedIn, setIsSignedIn] = useState(false);
-    const auth = getAuth(); 
-    const navigate = useNavigate();
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const auth = getAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setIsSignedIn(true);  // User is signed in
+        setIsSignedIn(true); // User is signed in
         console.log("User is signed in: ", user.displayName);
       } else {
-        setIsSignedIn(false);  // User is signed out
+        setIsSignedIn(false); // User is signed out
         console.log("No user is signed in");
       }
     });
@@ -42,24 +40,24 @@ function Eventspage() {
     navigate("/");
   };
 
-    
   return (
     <div>
-      <nav className="bg-transparent flex justify-between items-center px-10 py-5 z-10">
-        <ul className="flex items-center justify-center space-x-5">
+      <nav className="bg-transparent flex justify-between items-center px-20 py-5 z-10">
+        <ul className="flex items-center justify-center">
           <li>
-            <img src="../../assets/images/tree-icon.svg" />
+            <img src="../../assets/images/tree-icon.svg" className="px-2" />
           </li>
           <li className="text-lg text-black geist-reg">Enviro-Pact</li>
         </ul>
         {!isSignedIn && (
-        <Button
-          type="primary"
-          className="text-md text-black geist-reg"
-          style={{ background: "rgb(190, 242, 100)" }}
-        >
-          Sign In
-        </Button>
+          <Button
+            type="primary"
+            className="text-md text-black geist-reg"
+            style={{ background: "rgb(132 204 22)" }}
+            onClick={handleSignIn}
+          >
+            Sign In
+          </Button>
         )}
       </nav>
 

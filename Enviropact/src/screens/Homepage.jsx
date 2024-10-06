@@ -5,6 +5,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { signInWithGoogle } from "../auth/authService";
 import { useState, useEffect } from "react";
+import { ArrowRight } from "lucide-react";
 
 function Homepage() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -62,24 +63,24 @@ function Homepage() {
         {/*Hero Page */}
         <section className="min-h-screen bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
           <div className="flex flex-col px-20 py-40 max-w-full gap-4">
-            <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
+            <h1 className="font-bold text-6xl text-zinc-300 geist-reg leading-tight">
               Preserve your pact
               <br />
               with the Earth.
             </h1>
             <div className="pb-5 text-lg max-w-full">
-              <p className="text-lime-500 text-base geist-reg">
+              <p className="text-lime-500 text-lg geist-reg">
                 A new way to engage with your community and better
                 <br /> the Earth together, one trash bag at a time.
               </p>
             </div>
             <Button
               type="primary"
-              className="p-5 text-lg text-black w-40"
+              className="p-5 text-lg text-black w-60"
               style={{ background: "rgb(132 204 22)" }}
               onClick={handleSearchEvents}
             >
-              Search Events →
+              Search Events <ArrowRight className="h-6 ml-1.5" />
             </Button>
           </div>
         </section>
