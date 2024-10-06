@@ -1,6 +1,5 @@
 #event-card{
-    width: 50%;
-    min-width: 500px;
+    width: 700px;
 }
 
 #event-card-wrapper {
@@ -15,6 +14,15 @@
 
 #card-organization {
     opacity: 0.5;
+}
+
+
+#card-title {
+    font-size: 20px;
+}
+
+#card-description {
+    margin-bottom: 10px;
 }
 
 

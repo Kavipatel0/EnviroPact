@@ -1,18 +1,21 @@
 import React from "react";
 import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { Button, Input, Modal } from "antd";
+import { Button, Input } from "antd";
 import { signInWithGoogle } from "../auth/authService";
-import  { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import EventCard from "../components/EventCard";
 import CreateEventBtn from "../components/CreateEventBtn";
 import { getEvents } from "../auth/firestore";
 
+import { Divider, notification, Space } from 'antd';
+const Context = React.createContext({
+  name: 'Default',
+});
 
 const { Search } = Input;
 
 function Eventspage() {
-
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [events, setEvents] = useState([]); // State for events
   const [loading, setLoading] = useState(true);
@@ -23,10 +26,11 @@ function Eventspage() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setIsSignedIn(true);  // User is signed in
+        setIsSignedIn(true);
         console.log("User is signed in: ", user.displayName);
+        openNotification('bottomRight', "Signed In!");
       } else {
-        setIsSignedIn(false);  // User is signed out
+        setIsSignedIn(false);
         console.log("No user is signed in");
       }
     });
@@ -34,20 +38,32 @@ function Eventspage() {
     return () => unsubscribe();
   }, [auth]);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      setLoading(true);
-      try {
-        const fetchedEvents = await getEvents(); 
-        setEvents(fetchedEvents);
-      } catch (err) {
-        setError(err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  const openNotification = (placement, header) => {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    notification.info({
+      message: `${header}`,
+      description: `Hello ${user.displayName} :D`,
+      placement,
+    });
+  };
 
-    fetchEvents();
+
+
+  const fetchEvents = async () => {
+    setLoading(true);
+    try {
+      const fetchedEvents = await getEvents();
+      setEvents(fetchedEvents);
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchEvents(); // Fetch events on component mount
   }, []);
 
   const handleSignIn = async () => {
@@ -66,51 +82,47 @@ function Eventspage() {
       console.error("Sign-out error:", error);
     }
   };
-  
-  const handleSearchEvents = () => {
-    navigate("/");
-  };
-
 
   return (
     <div>
       <nav className="bg-transparent flex justify-between items-center px-10 py-5 z-10">
         <ul className="flex items-center justify-center space-x-5">
           <li>
-            <img src="../../assets/images/tree-icon.svg" />
+            <img src="../../assets/images/tree-icon.svg" alt="Tree Icon" />
           </li>
           <li className="text-lg text-black geist-reg">Enviro-Pact</li>
         </ul>
+      
         {!isSignedIn && (
-        <Button
-          type="primary"
-          className="text-md text-black geist-reg"
-          style={{ background: "rgb(190, 242, 100)" }}
-          onClick={handleSignIn}
-        >
-          Sign In
-        </Button>
+          <Button
+            type="primary"
+            className="text-md text-black geist-reg"
+            style={{ background: "rgb(190, 242, 100)" }}
+            onClick={handleSignIn}
+          >
+            Sign In
+          </Button>
         )}
         {isSignedIn && (
           <Button
-          type="primary"
-          className="text-md text-black geist-reg"
-          style={{ background: "rgb(190, 242, 100)" }}
-          onClick={handleSignOut}
+            type="primary"
+            className="text-md text-black geist-reg"
+            style={{ background: "rgb(190, 242, 100)" }}
+            onClick={handleSignOut}
           >
             Sign Out
           </Button>
         )}
       </nav>
 
-      {/*Body*/}
+      {/* Body */}
       <div className="bg-green-950 h-full min-h-screen flex flex-col items-center justify-start gap-4 pt-10">
         <img
           className="w-40"
           src="../../assets/images/hand-with-sapling.svg"
           alt=""
         />
-        {/*Header*/}
+        {/* Header */}
         <div className="w-full flex flex-col items-center justify-center gap-4">
           <h1 className="text-5xl text-white geist-reg">
             Find events in your area.
@@ -120,7 +132,7 @@ function Eventspage() {
           </p>
         </div>
 
-        {/*Searchbar*/}
+        {/* Searchbar */}
         <div className="flex items-center gap-4">
           <Search
             placeholder="search an event"
@@ -146,32 +158,35 @@ function Eventspage() {
             }}
           />
           {isSignedIn && (
-          <CreateEventBtn
-            size="large"
-            className="flex items-center text-sm"
-            variant="filled"
-            style={{
-              backgroundColor: "rgb(190, 242, 100)",
-              borderColor: "rgb(190, 242, 100)",
-              color: "black",
-            }}
-          >
-            Create an event
-          </CreateEventBtn>
+            <CreateEventBtn
+              size="large"
+              className="flex items-center text-sm"
+              variant="filled"
+              style={{
+                backgroundColor: "rgb(190, 242, 100)",
+                borderColor: "rgb(190, 242, 100)",
+                color: "black",
+              }}
+              onEventCreated={fetchEvents} // Pass fetchEvents as a prop
+            />
           )}
         </div>
         <div className="flex flex-col gap-4">
           {events.map((event) => (
             <EventCard 
-            key={event.id} 
-            title={event.title} 
-            organization={event.organization} 
-            description={event.description} 
-            location={event.location} 
-            date={event.date} 
-            time={event.time} 
-            rsvpCount={event.rsvpCount} 
-          />
+              key={event.id} 
+              title={event.title} 
+              organization={event.organization} 
+              description={event.description} 
+              location={event.location} 
+              date={event.date} 
+              time={event.time} 
+              rsvpCount={event.rsvpCount} 
+              uniqueId={event.id}
+              owner={event.owner}
+              //hasJoinedPost={userJoinedEvents.includes(event.id)} // Pass the joined state
+              fetchEvents={fetchEvents}
+            />
           ))}
         </div>
       </div>

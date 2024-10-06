@@ -5,11 +5,10 @@ import { addUser } from './firestore';
 
 export const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-  
+    
     try {
       await setPersistence(auth, browserSessionPersistence);
       const result = await signInWithPopup(auth, provider);
-      console.log("User signed in: ", result.user);
       await addUser(result.user);
       return result;
     } catch (error) {
