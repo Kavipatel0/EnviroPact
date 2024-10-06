@@ -6,8 +6,8 @@ function Homepage() {
 
   return (
     <>
-      <div className="bg-green-950">
-        <nav className="p-10 h-8">
+      <div className="">
+        <nav className="bg-transparent flex-row content-center px-20 py-5 z-10">
           <ul>
             <li>
               <img
@@ -15,13 +15,13 @@ function Homepage() {
                 className="float-left px-5"
               ></img>
             </li>
-            <li className="py-4 float-left text-xl font-bold text-zinc-300 geist-reg">
+            <li className="py-4 float-left text-8-xl font-bold text-black geist-reg">
               Enviro-Pact
             </li>
             <li>
               <Button
                 type="primary"
-                className="p-5 float-right text-lg text-black"
+                className="p-5 float-right text-md text-black"
                 style={{ background: "rgb(132 204 22)" }}
               >
                 Sign Up
@@ -30,7 +30,7 @@ function Homepage() {
           </ul>
         </nav>
 
-        <body className="min-h-screen h-screen relative">
+        <body className="min-h-screen h-screen relative bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
           <div className="p-12 py-40 max-w-full">
             <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
               Preserve your pact
@@ -52,10 +52,6 @@ function Homepage() {
             </Button>
           </div>
         </body>
-        {/* <img
-          src="../../assets/images/swoop-hands.svg"
-          className="absolute top-10 bottom-0 left-0"
-        ></img> */}
       </div>
     </>
   );
