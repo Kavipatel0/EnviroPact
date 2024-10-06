@@ -1,0 +1,72 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+#eventspage-navbar {
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    
+    font-family: Geist-Bold;
+    color: white;
+}
+
+#eventspage-navbar ul {
+    display: flex;
+    gap: 50px;
+    align-items: center;
+    list-style: none;
+}
+
+#eventspage-hero {
+    height:100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Geist-Regular;
+    margin-top: 70px;
+    margin-bottom: 70px;
+}
+
+#eventspage-hero h1 {
+    font-size: 40px;
+    color: white;
+}
+
+#eventspage-hero p {
+    font-size: 20px;
+    color: #C7EF4E;
+}
+
+#eventspage-search-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    gap: 30px; 
+    margin-top: 20px;
+}
+
+#create-event-btn {
+    height: 40px;
+    width: 120px;
+    display: flex;
+    align-items: center;
+}
+
+#eventspage-events-wrapper {
+    padding: 50px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+

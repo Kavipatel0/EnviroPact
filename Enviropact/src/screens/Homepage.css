@@ -8,6 +8,11 @@
     src: url(../fonts/GeistMono-Medium.otf);
 }
 
+@font-face {
+    font-family: 'Geist-Regular';
+    src: url(../fonts/GeistMono-Regular.otf);
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -18,7 +23,11 @@ html {
     background: #003310;
 }
 
-#navbar {
+#logo {
+    height: 30px;
+}
+
+#homepage-navbar {
     height: 60px;
 
     display: flex;
@@ -30,7 +39,7 @@ html {
     color: white;
 }
 
-#navbar ul {
+#homepage-navbar ul {
     display: flex;
     gap: 50px;
     align-items: center;
@@ -38,7 +47,7 @@ html {
 }
 
 
-#signIn-btn {
+#homepage-signIn-btn {
     background: #C7EF4E;
     color: #003310;
     padding: 10px 20px;
@@ -47,7 +56,7 @@ html {
     cursor: pointer;
 }
 
-#hero {
+#homepage-hero {
     margin-top: 100px;
     margin-left: 20px;
     height:300px;
@@ -59,17 +68,17 @@ html {
     font-family: Geist-Medium;
 }
 
-#hero h1 {
+#homepage-hero h1 {
     font-size: 60px;
     color: white;
 }
 
-#hero p {
+#homepage-hero p {
     font-size: 20px;
     color: #C7EF4E;
 }
 
-#searchEvents-btn {
+#homepage-searchEvents-btn {
     background: #C7EF4E;
     color: #003310;
     padding: 10px 20px;
@@ -79,7 +88,7 @@ html {
     width: fit-content;
 }
 
-#WaveDecoration {
+#homepage-WaveDecoration {
     position: absolute;
     bottom: 0;
     width: 100%;
