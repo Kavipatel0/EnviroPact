@@ -1,9 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+<<<<<<< HEAD
 @font-face {
   font-family: geist-reg;
   src: url(../assets/fonts/GEIST-REGULAR.TTF);
+=======
+
+@font-face {
+  font-family: geist-reg;
+  src: url(../assets/fonts/GEIST-REGULAR.TTF);
+}
+
+@font-face {
+  font-family: geist-bold;
+  src: url(../assets/fonts/GEIST-BOLD.TTF);
+}
+
+@font-face {
+  font-family: geist-med;
+  src: url(../assets/fonts/GEIST-MEDIUM.TTF);
+}
+
+.geist-reg {
+  font-family: geist-reg;
+}
+
+.geist-bold {
+  font-family: geist-bold;
+}
+
+.geist-med {
+  font-family: geist-med;
+>>>>>>> origin/main
 }
 
 .giest-reg {
