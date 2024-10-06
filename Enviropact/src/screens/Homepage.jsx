@@ -45,14 +45,17 @@ function Homepage() {
   return (
     <>
       <div>
-        <nav className="bg-transparent flex justify-between items-center px-20 py-4 z-10">
+        <nav
+          className="bg-green-950 sticky top-0 flex justify-between items-center px-20 py-4 z-10"
+          style={{ backgroundColor: "rgb(0, 51, 16)" }}
+        >
           <ul className="flex items-center justify-center">
             <li
               onClick={navigateHome}
               className="flex items-center justify-center text-lg text-black geist-reg hover:cursor-pointer"
             >
               <img src="../../assets/images/tree-icon.svg" className="px-2" />
-              <p>Enviro-Pact</p>
+              <p className="text-white">Enviro-Pact</p>
             </li>
           </ul>
           {!isSignedIn && (
@@ -219,7 +222,7 @@ function Homepage() {
             </div>
           </div>
         </section>
-
+        {/**slide 1 */}
         <section className="min-h-screen bg-cover bg-[url('../../assets/images/page-3-background.svg')] bg-no-repeat bg-left-top bg-green-950 flex flex-col items-center justify-center">
           <div className="w-full flex flex-col items-end justify-center bg-red-500">
             <h1 className="font-bold text-6xl text-white geist-reg">
