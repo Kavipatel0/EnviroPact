@@ -41,7 +41,7 @@ function Homepage() {
   return (
     <>
       <div>
-        <nav className="bg-transparent flex justify-between items-center px-20 py-5 z-10">
+        <nav className="bg-transparent flex justify-between items-center px-20 py-4 z-10">
           <ul className="flex items-center justify-center">
             <li>
               <img src="../../assets/images/tree-icon.svg" className="px-2" />
@@ -61,8 +61,8 @@ function Homepage() {
         </nav>
 
         {/*Hero Page */}
-        <section className="min-h-screen bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
-          <div className="flex flex-col px-20 py-40 max-w-full gap-4">
+        <section className="min-h-screen bg-[url('../../assets/images/hero-home-background.svg')] bg-cover bg-no-repeat bg-right-bottom">
+          <div className="flex flex-col px-20 py-32 max-w-full gap-4">
             <h1 className="font-bold text-6xl text-zinc-300 geist-reg leading-tight">
               Preserve your pact
               <br />
@@ -86,16 +86,22 @@ function Homepage() {
         </section>
 
         {/** second page */}
-        <section className="bg-white-100">
-          <div className="p-12 py-4 max-w-full">
+        <section className="pt-10 min-h-screen bg-white-100">
+          <div className="flex flex-col justify-center items-center p-12 py-4 max-w-full">
             <h1 className="font-bold text-center text-black text-6xl geist-reg">
               Upcoming Events in Gainesville, FL
             </h1>
-            <div className="p-10 flex flex-row justify-between items-center">
+            <div className="max-w-full p-20 flex flex-row justify-between items-center gap-5">
               <Card
                 title="SASE Street Cleanup 1"
-                bordered={false}
-                style={{ width: 500, height: 300 }}
+                bordered={true}
+                style={{
+                  width: 500,
+                  height: 275,
+                  borderColor: "#000",
+                  borderWidth: 1,
+                  borderStyle: "solid",
+                }}
               >
                 <div className="justify-items-center flex flex-row ">
                   <div className="basis-1/2">
@@ -118,18 +124,23 @@ function Homepage() {
                   </div>
                   <div className="basis-1/2">
                     <img
-                      src="../../assets/images/street-banner-1.svg"
+                      src="../../assets/images/street-banner.svg"
                       className="pl-10 float-right"
                       style={{ width: 250, height: 200 }}
                     ></img>
                   </div>
                 </div>
               </Card>
-
               <Card
-                title="SASE Street Cleanup 2"
-                bordered={false}
-                style={{ width: 500, height: 300 }}
+                title="SASE Street Cleanup 1"
+                bordered={true}
+                style={{
+                  width: 500,
+                  height: 275,
+                  borderColor: "#000",
+                  borderWidth: 1,
+                  borderStyle: "solid",
+                }}
               >
                 <div className="justify-items-center flex flex-row ">
                   <div className="basis-1/2">
@@ -152,18 +163,23 @@ function Homepage() {
                   </div>
                   <div className="basis-1/2">
                     <img
-                      src="../../assets/images/street-banner-1.svg"
+                      src="../../assets/images/street-banner.svg"
                       className="pl-10 float-right"
                       style={{ width: 250, height: 200 }}
                     ></img>
                   </div>
                 </div>
               </Card>
-
               <Card
-                title="SASE Street Cleanup 3"
-                bordered={false}
-                style={{ width: 500, height: 300 }}
+                title="SASE Street Cleanup 1"
+                bordered={true}
+                style={{
+                  width: 500,
+                  height: 275,
+                  borderColor: "#000",
+                  borderWidth: 1,
+                  borderStyle: "solid",
+                }}
               >
                 <div className="justify-items-center flex flex-row ">
                   <div className="basis-1/2">
@@ -186,7 +202,7 @@ function Homepage() {
                   </div>
                   <div className="basis-1/2">
                     <img
-                      src="../../assets/images/street-banner-1.svg"
+                      src="../../assets/images/street-banner.svg"
                       className="pl-10 float-right"
                       style={{ width: 250, height: 200 }}
                     ></img>
@@ -197,8 +213,8 @@ function Homepage() {
           </div>
         </section>
 
-        <section className="min-h-screen bg-[url('../../assets/images/Background2.svg')] bg-cover bg-no-repeat bg-right-bottom">
-          <div className="p-12 py-40 max-w-full">
+        <section className="min-h-screen bg-cover bg-[url('../../assets/images/page-3-background.svg')] bg-no-repeat bg-left-top bg-green-950">
+          <div className="p-12 py-40 w-full flex flex-col items-center justify-center">
             <h1 className="float-right pr-60 font-bold text-6xl text-zinc-300 geist-reg">
               "Grow your community's tree."
             </h1>
