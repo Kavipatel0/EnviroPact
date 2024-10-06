@@ -32,29 +32,30 @@ function About() {
         </ul>
       </nav>
 
-      <section className="p-10 bg-white-100">
+      <section className="p-10 bg-lime-50">
         <div className="p-12 py-4 max-w-full">
+        <Divider style={{ fontFamily: "geist-reg" }}>
           <div className="flex justify-center">
-          <h1 className="font-bold text-center text-black text-6xl geist-reg">Meet&nbsp;</h1>
-            {SLAK.map((el, i) => (
-              <motion.h1
-                className="font-bold text-center text-black text-6xl geist-reg"
-                initial={{ opacity: 0 }}
-                animate={{ 
-                  opacity: 1,
-                  color: "#3f6212"
-                }}
-                transition={{ 
-                  duration: 0.25,
-                  delay: i / 10
-                }}
-                key={i}
-              >
-                {el}{" "}
-              </motion.h1>
-            ))}
-          </div>
-          <Divider />
+            <h1 className="font-bold text-center text-black text-6xl geist-reg">Meet&nbsp;</h1>
+              {SLAK.map((el, i) => (
+                <motion.h1
+                  className="font-bold text-center text-black text-6xl geist-reg"
+                  initial={{ opacity: 0 }}
+                  animate={{ 
+                    opacity: 1,
+                    color: "#3f6212"
+                  }}
+                  transition={{ 
+                    duration: 0.75,
+                    delay: i / 15
+                  }}
+                  key={i}
+                >
+                  {el}{" "}
+                </motion.h1>
+              ))}
+            </div>
+          </Divider>
           <motion.div 
             className="p-10 flex flex-row items-center justify-center space-x-32"
             variants={{
@@ -228,11 +229,11 @@ function About() {
         </div>
       </section>
 
-      <section className="p-10 bg-white-100">
+      <section className="p-10 bg-lime-50">
         <div className="p-12 py-4 max-w-full">
-          <h1 className="p-4 font-bold text-center text-black text-6xl geist-reg">Q&A</h1>
-          <Divider />
-          
+          <Divider style={{ fontFamily: "geist-reg" }}>
+            <h1 className="p-4 font-bold text-center text-black text-6xl geist-reg">Q&A</h1>
+          </Divider>
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">Inspiration</h2>
           <p className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg">
             Placeholder Paragraph Text
