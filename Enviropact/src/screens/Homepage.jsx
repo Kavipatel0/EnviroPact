@@ -38,8 +38,8 @@ function Homepage() {
     navigate("/events");
   };
 
-  const navigateHome = () => {
-    navigate("/home");
+  const handleAbout = () => {
+    navigate("/About");
   };
 
   return (
@@ -55,6 +55,15 @@ function Homepage() {
               <p>Enviro-Pact</p>
             </li>
           </ul>
+          <Button
+              type="primary"
+              className="text-md text-black geist-reg"
+              style={{ background: "rgb(132 204 22)" }}
+              onClick={handleAbout}
+            >
+              ABOUT
+            </Button>
+
           {!isSignedIn && (
             <Button
               type="primary"
