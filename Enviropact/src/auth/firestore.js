@@ -179,8 +179,8 @@ export const removeEventFromUser = async (eventID, userID) => {
   const user = doc(db, "users", userID);
   try {
     await updateDoc(user, {
-      eventsJoined: arrayRemove(event.id),
-      eventsCreated: arrayRemove(event.id)
+      eventsJoined: arrayRemove(eventID),
+      eventsCreated: arrayRemove(eventID)
     });
     console.log("Updated eventsJoined");
   }
@@ -189,31 +189,20 @@ export const removeEventFromUser = async (eventID, userID) => {
   }
 }
 
-export const editEvent = async (eventID, title, owner, organization, description, location, date, time) => {
+export const editEvent = async (eventID, title, organization, description, location, date, time) => {
   const event = doc(db, "events", eventID);
   try {
     await updateDoc(event, {
       title: title,
       organization: organization,
-      owner: owner,
       description: description,
       location: location,
       date: date,
       time: time
     });
+    console.log("Firestore updated event yippee");
   }
   catch (e) {
     console.error("Firestorm could not update event:", e);
   }
 }
-
-
-/*
-
-NOTES FOR FUTURE NEEDS
-Getting User object to add to Event:
-const user = auth.currentUser;
-  can now use user for stuff 
-
-
-*/

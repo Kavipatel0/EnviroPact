@@ -7,6 +7,8 @@ import { useState, useEffect, useMemo } from "react";
 import EventCard from "../components/EventCard";
 import CreateEventBtn from "../components/CreateEventBtn";
 import { getEvents } from "../auth/firestore";
+import moment from 'moment';
+
 
 import { Divider, notification, Space } from 'antd';
 const Context = React.createContext({
@@ -28,7 +30,7 @@ function Eventspage() {
       if (user) {
         setIsSignedIn(true);
         console.log("User is signed in: ", user.displayName);
-        openNotification('bottomRight', "Signed In!");
+        openNotification('bottomRight', "Signed In!", `Welcome, ${user.displayName}!`);
       } else {
         setIsSignedIn(false);
         console.log("No user is signed in");
@@ -38,33 +40,45 @@ function Eventspage() {
     return () => unsubscribe();
   }, [auth]);
 
-  const openNotification = (placement, header) => {
+  const openNotification = (placement, header, message) => {
     const auth = getAuth();
     const user = auth.currentUser;
     notification.info({
       message: `${header}`,
-      description: `Hello ${user.displayName} :D`,
+      description: `${message}`,
       placement,
     });
   };
 
 
 
-  const fetchEvents = async () => {
-    setLoading(true);
-    try {
-      const fetchedEvents = await getEvents();
-      setEvents(fetchedEvents);
-    } catch (err) {
-      setError(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  
+const fetchEvents = async () => {
+  setLoading(true);
+  try {
+    const fetchedEvents = await getEvents();
 
-  useEffect(() => {
-    fetchEvents(); // Fetch events on component mount
-  }, []);
+    // Sort events based on date and time
+    const sortedEvents = fetchedEvents.sort((a, b) => {
+      // Parse the date and time
+      const dateTimeA = moment(`${a.date} ${a.time}`, 'YYYY-MM-DD h:mm A').toDate();
+      const dateTimeB = moment(`${b.date} ${b.time}`, 'YYYY-MM-DD h:mm A').toDate();
+
+      // Compare the two date-time values
+      return dateTimeA - dateTimeB; // Ascending order
+    });
+
+    setEvents(sortedEvents);
+  } catch (err) {
+    setError(err);
+  } finally {
+    setLoading(false);
+  }
+};
+
+useEffect(() => {
+  fetchEvents(); // Fetch events on component mount
+}, []); // Empty dependency array ensures it only runs on mount
 
   const handleSignIn = async () => {
     try {
@@ -168,6 +182,7 @@ function Eventspage() {
                 color: "black",
               }}
               onEventCreated={fetchEvents} // Pass fetchEvents as a prop
+              postNotification = {openNotification}
             />
           )}
         </div>
@@ -184,8 +199,9 @@ function Eventspage() {
               rsvpCount={event.rsvpCount} 
               uniqueId={event.id}
               owner={event.owner}
-              //hasJoinedPost={userJoinedEvents.includes(event.id)} // Pass the joined state
               fetchEvents={fetchEvents}
+              postNotification = {openNotification}
+
             />
           ))}
         </div>

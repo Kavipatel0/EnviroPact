@@ -7,7 +7,7 @@ import { addCreatedEventToUser, addEvent, addUserToEvent } from '../auth/firesto
 import { getAuth } from 'firebase/auth';
 import { runes } from 'runes2';
 
-const CreateEventBtn = ({ onEventCreated }) => {
+const CreateEventBtn = ({ onEventCreated, postNotification }) => {
   // Modal Open/Close
   const [open, setOpen] = useState(false);
   const [confirmLoading, setConfirmLoading] = useState(false);
@@ -55,6 +55,7 @@ const CreateEventBtn = ({ onEventCreated }) => {
             await addUserToEvent(newEvent.id, userId);
             await addCreatedEventToUser(newEvent.id, userId);
           };
+          postNotification('bottomRight', "Event Created!", `Event "${title}" has been created!`);
         }
       
     } catch (error) {

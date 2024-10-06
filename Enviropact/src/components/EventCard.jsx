@@ -6,10 +6,13 @@ import { useState, useEffect } from "react";
 import { addUserToEvent, removeEvent, removeUserFromEvent, removeEventFromUser } from "../auth/firestore";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../auth/firebase";
+import  EditEventBtn from "../components/EditEventBtn";
 
 import "./EventCard.css";
 
-const EventCard = ({ title, organization, description, location, date, time, rsvpCount, uniqueId, owner, fetchEvents }) => {
+const EventCard = ({ title, organization, description, location, date, time, rsvpCount, uniqueId, owner, fetchEvents, postNotification }) => {
+  console.log("UNIQUE ID: ", uniqueId);
+
   const [hasJoinedEvent, setHasJoinedEvent] = useState(false);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isOwner, setIsOwner] = useState(false);
@@ -52,6 +55,8 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
       await removeEvent(uniqueId); 
       console.log(`Event removed: ${uniqueId}`);
       await fetchEvents(); // Trigger re-fetching of events
+      postNotification('bottomRight', "Event Deleted!", `The event "${title}" has been deleted!`);
+
     } catch (error) {
       console.error("Failed to remove event:", error);
     }
@@ -63,8 +68,11 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
       setHasJoinedEvent(true);
       await fetchEvents(); // Trigger re-fetching of events
       console.log(hasJoinedEvent);
+      postNotification('bottomRight', "Event Joined!", `You have joined the event "${title}"!`);
+
     } catch (error) {
       console.error("Failed to join event:", error);
+      
     }
   };
 
@@ -74,6 +82,8 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
       await removeEventFromUser(uniqueId, auth.currentUser.uid);
       setHasJoinedEvent(false);
       await fetchEvents(); // Trigger re-fetching of events
+      postNotification('bottomRight', "Event Left!", `You have left the event "${title}"!`);
+
       console.log(hasJoinedEvent);
     } catch (error) {
       console.error("Failed to leave event:", error);
@@ -94,9 +104,11 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
     <Card id="event-card">
       <div id="event-card-wrapper">
         <div id="event-info">
-          <strong><h2 id="card-title">{title}</h2></strong>
-          <p id="card-organization">{organization}</p>
-          <p id="card-description">{description}</p>
+          <div id="event-info-body">
+            <strong><h2 id="card-title">{title}</h2></strong>
+            <p id="card-organization">{organization}</p>
+            <p id="card-description">{description}</p>
+          </div>
           <div id="card-footer">
             <MapPin style={{ width: "20px" }} />
             <p id="card-location">{location}</p>
@@ -109,6 +121,24 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
           <p id="card-rsvpCount">
             <Users style={{ width: "20px" }} /> {rsvpCount}
           </p>
+          {isOwner && isSignedIn && (
+            <EditEventBtn
+            passedUniqueId={uniqueId}
+            passedTitle={title}
+            passedOrganization={organization}
+            passedDescription={description}
+            passedLocation={location}
+            passedDate={date}
+            passedTime={time}
+
+            onEventUpdated={fetchEvents} // Function to call after updating
+            postNotification={postNotification}
+
+
+            >
+              Edit Post
+            </EditEventBtn>
+          )}
           {isOwner && isSignedIn && (
             <Button
               id="event-delete-btn"
