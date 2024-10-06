@@ -25,7 +25,7 @@ function Homepage() {
         </nav>
         {/*Hero Page */}
         <section className="min-h-screen bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
-          <div className="px-20 py-40 max-w-full">
+          <div className="flex flex-col px-20 py-40 max-w-full gap-4">
             <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
               Preserve your pact
               <br />
@@ -39,7 +39,7 @@ function Homepage() {
             </div>
             <Button
               type="primary"
-              className="p-5 text-lg text-black"
+              className="p-5 text-lg text-black w-40"
               style={{ background: "rgb(132 204 22)" }}
             >
               Search Events →
