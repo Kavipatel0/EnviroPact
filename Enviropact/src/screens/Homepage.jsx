@@ -39,7 +39,7 @@ function Homepage() {
   };
 
   const handleAbout = () => {
-    navigate("/About");
+    navigate("/about");
   };
 
   return (
