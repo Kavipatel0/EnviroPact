@@ -1,20 +1,24 @@
 import React from "react";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { getAuth, onAuthStateChanged, signOut } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { Button, Input, Modal } from "antd";
 import { signInWithGoogle } from "../auth/authService";
 import  { useState, useEffect } from "react";
 import EventCard from "../components/EventCard";
 import CreateEventBtn from "../components/CreateEventBtn";
+import { getEvents } from "../auth/firestore";
+
 
 const { Search } = Input;
 
-
 function Eventspage() {
 
-    const [isSignedIn, setIsSignedIn] = useState(false);
-    const auth = getAuth(); 
-    const navigate = useNavigate();
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [events, setEvents] = useState([]); // State for events
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const auth = getAuth();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -30,6 +34,22 @@ function Eventspage() {
     return () => unsubscribe();
   }, [auth]);
 
+  useEffect(() => {
+    const fetchEvents = async () => {
+      setLoading(true);
+      try {
+        const fetchedEvents = await getEvents(); 
+        setEvents(fetchedEvents);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchEvents();
+  }, []);
+
   const handleSignIn = async () => {
     try {
       await signInWithGoogle();
@@ -38,11 +58,20 @@ function Eventspage() {
     }
   };
 
+  const handleSignOut = async () => {
+    try {
+      await signOut(auth);
+      console.log("Successfully signed out");
+    } catch (error) {
+      console.error("Sign-out error:", error);
+    }
+  };
+  
   const handleSearchEvents = () => {
     navigate("/");
   };
 
-    
+
   return (
     <div>
       <nav className="bg-transparent flex justify-between items-center px-10 py-5 z-10">
@@ -57,14 +86,25 @@ function Eventspage() {
           type="primary"
           className="text-md text-black geist-reg"
           style={{ background: "rgb(190, 242, 100)" }}
+          onClick={handleSignIn}
         >
           Sign In
         </Button>
         )}
+        {isSignedIn && (
+          <Button
+          type="primary"
+          className="text-md text-black geist-reg"
+          style={{ background: "rgb(190, 242, 100)" }}
+          onClick={handleSignOut}
+          >
+            Sign Out
+          </Button>
+        )}
       </nav>
 
       {/*Body*/}
-      <div className="bg-green-950 h-screen flex flex-col items-center justify-start gap-4 pt-10">
+      <div className="bg-green-950 h-full min-h-screen flex flex-col items-center justify-start gap-4 pt-10">
         <img
           className="w-40"
           src="../../assets/images/hand-with-sapling.svg"
@@ -105,7 +145,8 @@ function Eventspage() {
               width: 350,
             }}
           />
-          <Button
+          {isSignedIn && (
+          <CreateEventBtn
             size="large"
             className="flex items-center text-sm"
             variant="filled"
@@ -116,12 +157,22 @@ function Eventspage() {
             }}
           >
             Create an event
-            <img
-              className="w-5"
-              src="../../assets/icons/calendar-icon.svg"
-              alt="calendar icon"
-            />
-          </Button>
+          </CreateEventBtn>
+          )}
+        </div>
+        <div className="flex flex-col gap-4">
+          {events.map((event) => (
+            <EventCard 
+            key={event.id} 
+            title={event.title} 
+            organization={event.organization} 
+            description={event.description} 
+            location={event.location} 
+            date={event.date} 
+            time={event.time} 
+            rsvpCount={event.rsvpCount} 
+          />
+          ))}
         </div>
       </div>
     </div>
