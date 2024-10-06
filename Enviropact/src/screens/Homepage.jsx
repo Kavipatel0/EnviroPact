@@ -21,10 +21,10 @@ function Homepage() {
             <li>
               <Button
                 type="primary"
-                className="p-5 float-right text-md text-black"
+                className="py-2 px-4 float-right text-md text-black geist-reg"
                 style={{ background: "rgb(132 204 22)" }}
               >
-                Sign Up
+                Sign In
               </Button>
             </li>
           </ul>
