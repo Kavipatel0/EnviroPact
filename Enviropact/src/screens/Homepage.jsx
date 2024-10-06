@@ -50,10 +50,10 @@ function Homepage() {
             <li>
               <img
                 src="../../assets/images/tree-icon.svg"
-                className="float-left px-5"
+                className="float-left px-2"
               ></img>
             </li>
-            <li className="py-4 float-left text-8-xl font-bold text-black geist-reg">
+            <li className="flex-row justify-center py-2 float-left text-lg text-black geist-reg">
               Enviro-Pact
             </li>
             <li>
