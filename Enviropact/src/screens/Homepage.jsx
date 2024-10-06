@@ -4,21 +4,20 @@ import { Button } from "antd";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { signInWithGoogle } from "../auth/authService";
-import  { useState, useEffect } from "react";
-
+import { useState, useEffect } from "react";
 
 function Homepage() {
   const [isSignedIn, setIsSignedIn] = useState(false);
-  const auth = getAuth(); 
+  const auth = getAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setIsSignedIn(true);  // User is signed in
+        setIsSignedIn(true); // User is signed in
         console.log("User is signed in: ", user.displayName);
       } else {
-        setIsSignedIn(false);  // User is signed out
+        setIsSignedIn(false); // User is signed out
         console.log("No user is signed in");
       }
     });
@@ -42,28 +41,27 @@ function Homepage() {
     <>
       <div>
         <nav className="bg-transparent flex justify-between items-center px-20 py-5 z-10">
-          <ul className="flex items-center justify-center space-x-5">
+          <ul className="flex items-center justify-center">
             <li>
               <img src="../../assets/images/tree-icon.svg" className="px-2" />
             </li>
             <li className="text-lg text-black geist-reg">Enviro-Pact</li>
           </ul>
           {!isSignedIn && (
-          <Button
-            type="primary"
-            className="text-md text-black geist-reg"
-            style={{ background: "rgb(132 204 22)" }}
-            onClick={handleSignIn}
-          >
-            Sign In
-          </Button>
+            <Button
+              type="primary"
+              className="text-md text-black geist-reg"
+              style={{ background: "rgb(132 204 22)" }}
+              onClick={handleSignIn}
+            >
+              Sign In
+            </Button>
           )}
-
         </nav>
 
-          {/*Hero Page */}
+        {/*Hero Page */}
         <section className="min-h-screen bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
-          <div className="px-20 py-40 max-w-full">
+          <div className="flex flex-col px-20 py-40 max-w-full gap-4">
             <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
               Preserve your pact
               <br />
@@ -77,7 +75,7 @@ function Homepage() {
             </div>
             <Button
               type="primary"
-              className="p-5 text-lg text-black"
+              className="p-5 text-lg text-black w-40"
               style={{ background: "rgb(132 204 22)" }}
               onClick={handleSearchEvents}
             >
