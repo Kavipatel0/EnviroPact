@@ -23,7 +23,12 @@ function Eventspage() {
       </nav>
 
       {/*Body*/}
-      <div className="bg-green-950 h-screen flex flex-col items-center justify-center gap-6">
+      <div className="bg-green-950 h-screen flex flex-col items-center justify-start gap-4 pt-10">
+        <img
+          className="w-40"
+          src="../../assets/images/hand-with-sapling.svg"
+          alt=""
+        />
         {/*Header*/}
         <div className="w-full flex flex-col items-center justify-center gap-4">
           <h1 className="text-5xl text-white geist-reg">
@@ -41,6 +46,7 @@ function Eventspage() {
             allowClear
             enterButton={
               <Button
+                className="text-sm"
                 style={{
                   backgroundColor: "rgb(190, 242, 100)",
                   borderColor: "rgb(190, 242, 100)",
@@ -55,12 +61,12 @@ function Eventspage() {
               alert("BELLO");
             }}
             style={{
-              width: 400,
+              width: 350,
             }}
           />
           <Button
             size="large"
-            className="flex items-center"
+            className="flex items-center text-sm"
             variant="filled"
             style={{
               backgroundColor: "rgb(190, 242, 100)",
@@ -68,7 +74,7 @@ function Eventspage() {
               color: "black",
             }}
           >
-            Create Event
+            Create an event
             <img
               className="w-5"
               src="../../assets/icons/calendar-icon.svg"
