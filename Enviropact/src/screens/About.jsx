@@ -5,6 +5,8 @@ import { Divider } from "antd";
 import { motion} from "framer-motion"; 
 
 function About() {
+  const SLAK = "Team SLAK".split("");
+
   return (
     <div className="">
       <nav className="bg-transparent flex-row content-center px-20 py-5 z-10">
@@ -32,7 +34,26 @@ function About() {
 
       <section className="p-10 bg-white-100">
         <div className="p-12 py-4 max-w-full">
-          <h1 className="font-bold text-center text-black text-6xl geist-reg">Meet Team SLAK</h1>
+          <div className="flex justify-center">
+          <h1 className="font-bold text-center text-black text-6xl geist-reg">Meet&nbsp;</h1>
+            {SLAK.map((el, i) => (
+              <motion.h1
+                className="font-bold text-center text-black text-6xl geist-reg"
+                initial={{ opacity: 0 }}
+                animate={{ 
+                  opacity: 1,
+                  color: "#3f6212"
+                }}
+                transition={{ 
+                  duration: 0.25,
+                  delay: i / 10
+                }}
+                key={i}
+              >
+                {el}{" "}
+              </motion.h1>
+            ))}
+          </div>
           <Divider />
           <motion.div 
             className="p-10 flex flex-row items-center justify-center space-x-32"
@@ -52,7 +73,11 @@ function About() {
                 initial={{ y:0 }}
                 whileHover={{ y:-20 }}
               >
-                <Card style={{ width: 500 }}>
+                <Card 
+                  className="bg-lime-200"
+                  style={{ 
+                    width: 500, 
+                    borderStyle: "solid"}}>
                   <img src="../../assets/images/stanley.jpg" className="object-cover w-full"></img>
                   <h2 className="pt-6 flex justify-center text-4xl text-lime-800 font-bold geist-reg">Stanley Ke</h2>
                   {/* <p className="p-2 flex justify-center text-lg geist-reg">Placeholder</p> */}
@@ -81,9 +106,12 @@ function About() {
 
             <motion.div
               initial={{ y:0 }}
-              whileHover={{ y:-20 }}
-            >
-              <Card style={{ width: 500 }}>
+              whileHover={{ y:-20 }}>
+              <Card 
+                  className="bg-lime-100"
+                  style={{ 
+                    width: 500, 
+                    borderStyle: "solid"}}>
                 <img src="../../assets/images/placeholder.png" className="object-cover w-full"></img>
                 <h2 className="pt-6 flex justify-center text-4xl text-lime-800 font-bold geist-reg">Logan Bjork</h2>
                 {/* <p className="p-2 flex justify-center text-lg geist-reg">Placeholder</p> */}
@@ -130,7 +158,11 @@ function About() {
                 initial={{ y:0 }}
                 whileHover={{ y:-20 }}
               >
-                <Card style={{ width: 500 }}>
+                <Card 
+                  className="bg-lime-100"
+                  style={{ 
+                    width: 500, 
+                    borderStyle: "solid"}}>
                   <img src="../../assets/images/adrian.jpg" className="object-cover w-full"></img>
                   <h2 className="pt-6 flex justify-center text-4xl text-lime-800 font-bold geist-reg">Adrian Moreno</h2>
                   {/* <p className="p-2 flex justify-center text-lg geist-reg">Placeholder</p> */}
@@ -161,7 +193,11 @@ function About() {
                 initial={{ y:0 }}
                 whileHover={{ y:-20 }}
               >
-                <Card style={{ width: 500 }}>
+                <Card 
+                  className="bg-lime-200"
+                  style={{ 
+                    width: 500, 
+                    borderStyle: "solid"}}>
                   <img src="../../assets/images/kavi.jpg" className="object-cover w-full"></img>
                   <h2 className="pt-6 flex justify-center text-4xl text-lime-800 font-bold geist-reg">Kavi Patel</h2>
                   {/* <p className="p-2 flex justify-center text-lg geist-reg">Placeholder</p> */}
