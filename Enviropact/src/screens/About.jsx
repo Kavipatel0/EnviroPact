@@ -34,6 +34,7 @@ function About() {
         </ul>
       </nav>
 
+      {/* Beginning of page  */}
       <section className="p-10 bg-lime-50">
         <div className="p-12 py-4 max-w-full">
         <Divider style={{ fontFamily: "geist-reg" }}>
@@ -58,6 +59,8 @@ function About() {
               ))}
             </div>
           </Divider>
+
+          {/* Cards */}
           <motion.div 
             className="p-10 flex flex-row items-center justify-center space-x-32"
             variants={{
@@ -230,7 +233,9 @@ function About() {
           </motion.div>
         </div>
       </section>
+      {/* End of card section/meet the team */}
 
+      {/* Beginning of QNA section */}
       <section className="p-10 bg-lime-50">
         <div className="p-12 py-4 max-w-full">
           <Divider style={{ fontFamily: "geist-reg" }}>
@@ -242,7 +247,7 @@ function About() {
             className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeIn"}}>
+            transition={{ duration: 1, ease: "easeIn"}}>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </motion.p>
 
@@ -251,9 +256,10 @@ function About() {
             className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeIn"}}>
-            For our front end, we built Enviro-pact using React.js, Tailwind CSS, and the AntDesign and Framer Motion libraries.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            transition={{ duration: 1, ease: "easeIn"}}>
+            For our frontend, we built Enviropact using React.js, Tailwind CSS, and the AntDesign and Framer Motion libraries.
+            
+            For the backend, we utilized JavaScript, Firestore as a database, and Firebase as a BaaS and authenticator. 
           </motion.p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">Challenges</h2>
@@ -261,11 +267,9 @@ function About() {
             className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeIn"}}>
+            transition={{ duration: 1, ease: "easeIn"}}>
             One of our main challenges was using Git. 
             What should have been a relatively simple process led to a lot of merge conflicts, resulting in a handful of branch resets. 
-            WRITE MORE
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </motion.p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">What We Learned</h2>
@@ -273,16 +277,14 @@ function About() {
             className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 1.2, ease: "easeIn"}}>
+            transition={{ duration: 1, ease: "easeIn"}}>
             This having been our first hackathon, we all learned a lot individually. 
             Depending on the member, it was a new language, library, or database.
-            WRITE MORE
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
           </motion.p>
         </div>
       </section>
+      {/* End QNA */}
     </div>
-
   )
 }
 
