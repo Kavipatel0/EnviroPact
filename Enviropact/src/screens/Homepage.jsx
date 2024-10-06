@@ -93,8 +93,8 @@ function Homepage() {
         </section>
 
         {/** second page */}
-        <section className="pt-10 min-h-screen bg-white-100">
-          <div className="flex flex-col justify-center items-center p-12 py-4 max-w-full">
+        <section className="pt-10 bg-white-100">
+          <div className="flex flex-col justify-center items-center p-5 py-4 max-w-full">
             <h1 className="font-bold text-center text-black text-6xl geist-reg">
               Upcoming Events in Gainesville, FL
             </h1>
@@ -220,13 +220,13 @@ function Homepage() {
           </div>
         </section>
 
-        <section className="min-h-screen bg-cover bg-[url('../../assets/images/page-3-background.svg')] bg-no-repeat bg-left-top bg-green-950">
-          <div className="p-12 py-40 w-full flex flex-col items-center justify-center">
-            <h1 className="float-right pr-60 font-bold text-6xl text-zinc-300 geist-reg">
+        <section className="min-h-screen bg-cover bg-[url('../../assets/images/page-3-background.svg')] bg-no-repeat bg-left-top bg-green-950 flex flex-col items-center justify-center">
+          <div className="w-full flex flex-col items-end justify-center bg-red-500">
+            <h1 className="font-bold text-6xl text-white geist-reg">
               "Grow your community's tree."
             </h1>
-            <div className="pb-5 max-w-full">
-              <p className="py-2 float-right text-xl text-zinc-300 geist-reg">
+            <div className="max-w-full">
+              <p className="text-xl text-white geist-reg">
                 A new way to engage with your community and better
                 <br /> the Earth together, one trash bag at a time.
               </p>
