@@ -44,8 +44,8 @@ function Homepage() {
 
   return (
     <>
-      <div className="bg-green-950">
-        <nav className="p-10 h-8">
+      <div className="">
+        <nav className="bg-transparent flex-row content-center px-20 py-5 z-10">
           <ul>
             <li>
               <img
@@ -53,7 +53,7 @@ function Homepage() {
                 className="float-left px-5"
               ></img>
             </li>
-            <li className="py-4 float-left text-xl font-bold text-zinc-300 geist-reg">
+            <li className="py-4 float-left text-8-xl font-bold text-black geist-reg">
               Enviro-Pact
             </li>
             <li>
