@@ -28,7 +28,7 @@ function About() {
             </ul>
         </nav>
 
-        <section className="bg-white-100">
+        <section className="p-10 bg-white-100">
           <div className="p-12 py-4 max-w-full">
             <h1 className="font-bold text-center text-black text-6xl geist-reg">Meet the Team</h1>
             <p className="p-8 text-2xl flex justify-center geist-reg">Team SLAK (this is placeholder text)</p>
@@ -98,10 +98,21 @@ function About() {
           </div>
         </section>
 
-        <section className="bg-white-100">
+        <section className="p-10 bg-white-100">
           <div className="p-12 py-4 max-w-full">
-            <h1 className="font-bold text-center text-black text-6xl geist-reg">How It's Made</h1>
-            <p className="p-8 text-2xl flex justify-center geist-reg">Include tech stack here</p>
+            <h1 className="p-4 font-bold text-center text-black text-6xl geist-reg">Q&A</h1>
+            
+            <h2 className="p-4 text-center text-black text-4xl geist-reg">Inspiration</h2>
+            <p className="pt-1 p-8 text-2xl flex justify-center geist-reg">Placeholder Paragraph Text</p>
+
+            <h2 className="p-4 text-center text-black text-4xl geist-reg">How It's Made</h2>
+            <p className="pt-1 p-8 text-2xl flex justify-center geist-reg">Placeholder Paragraph Text</p>
+
+            <h2 className="p-4 text-center text-black text-4xl geist-reg">Challenges</h2>
+            <p className="pt-1 p-8 text-2xl flex justify-center geist-reg">Placeholder Paragraph Text</p>
+
+            <h2 className="p-4 text-center text-black text-4xl geist-reg">What We Learned</h2>
+            <p className="pt-1 p-8 text-2xl flex justify-center geist-reg">Placeholder Paragraph Text</p>
           </div>
         </section>
     </div>
