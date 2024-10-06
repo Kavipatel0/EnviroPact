@@ -12,19 +12,19 @@ function Homepage() {
             <li>
               <img
                 src="../../assets/images/tree-icon.svg"
-                className="float-left px-5"
+                className="float-left px-2"
               ></img>
             </li>
-            <li className="py-4 float-left text-8-xl font-bold text-black geist-reg">
+            <li className="flex-row justify-center py-2 float-left text-lg text-black geist-reg">
               Enviro-Pact
             </li>
             <li>
               <Button
                 type="primary"
-                className="p-5 float-right text-md text-black"
+                className="py-2 px-4 float-right text-md text-black geist-reg"
                 style={{ background: "rgb(132 204 22)" }}
               >
-                Sign Up
+                Sign In
               </Button>
             </li>
           </ul>
@@ -34,7 +34,7 @@ function Homepage() {
           {/*Hero Page */}
           <section className="min-h-screen bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
             <div className="p-12 py-40 max-w-full">
-              <h1 className="font-bold text-8xl text-zinc-300 geist-reg">
+              <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
                 Preserve your pact
                 <br />
                 with the Earth.
