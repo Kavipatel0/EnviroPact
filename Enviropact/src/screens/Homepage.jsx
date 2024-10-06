@@ -7,27 +7,20 @@ function Homepage() {
   return (
     <>
       <div className="">
-        <nav className="bg-transparent flex-row content-center px-20 py-5 z-10">
-          <ul>
+        <nav className="bg-transparent flex justify-between items-center px-20 py-5 z-10">
+          <ul className="flex items-center justify-center space-x-5">
             <li>
-              <img
-                src="../../assets/images/tree-icon.svg"
-                className="float-left px-2"
-              ></img>
+              <img src="../../assets/images/tree-icon.svg" className="px-2" />
             </li>
-            <li className="flex-row justify-center py-2 float-left text-lg text-black geist-reg">
-              Enviro-Pact
-            </li>
-            <li>
-              <Button
-                type="primary"
-                className="py-2 px-4 float-right text-md text-black geist-reg"
-                style={{ background: "rgb(132 204 22)" }}
-              >
-                Sign In
-              </Button>
-            </li>
+            <li className="text-lg text-black geist-reg">Enviro-Pact</li>
           </ul>
+          <Button
+            type="primary"
+            className="text-md text-black geist-reg"
+            style={{ background: "rgb(132 204 22)" }}
+          >
+            Sign In
+          </Button>
         </nav>
 
         <body>
