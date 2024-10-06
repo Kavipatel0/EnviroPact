@@ -44,26 +44,18 @@ function Homepage() {
 
   return (
     <>
-      <div className="">
-        <nav className="bg-transparent flex-row content-center px-20 py-5 z-10">
-          <ul>
-            <li>
-              <img
-                src="../../assets/images/tree-icon.svg"
-                className="float-left px-2"
-              ></img>
-            </li>
-            <li className="flex-row justify-center py-2 float-left text-lg text-black geist-reg">
-              Enviro-Pact
-            </li>
-            <li>
-              <Button
-                type="primary"
-                className="py-2 px-4 float-right text-md text-black geist-reg"
-                style={{ background: "rgb(132 204 22)" }}
-              >
-                Sign In
-              </Button>
+      <div>
+        <nav
+          className="bg-green-950 sticky top-0 flex justify-between items-center px-20 py-4 z-10"
+          style={{ backgroundColor: "rgb(0, 51, 16)" }}
+        >
+          <ul className="flex items-center justify-center">
+            <li
+              onClick={navigateHome}
+              className="flex items-center justify-center text-lg text-black geist-reg hover:cursor-pointer"
+            >
+              <img src="../../assets/images/tree-icon.svg" className="px-2" />
+              <p className="text-white">Enviro-Pact</p>
             </li>
           </ul>
           <Button
@@ -113,8 +105,8 @@ function Homepage() {
         </section>
 
         {/** second page */}
-        <section className="pt-10 min-h-screen bg-white-100">
-          <div className="flex flex-col justify-center items-center p-12 py-4 max-w-full">
+        <section className="pt-10 bg-white-100">
+          <div className="flex flex-col justify-center items-center p-5 py-4 max-w-full">
             <h1 className="font-bold text-center text-black text-6xl geist-reg">
               Upcoming Events in Gainesville, FL
             </h1>
@@ -239,14 +231,14 @@ function Homepage() {
             </div>
           </div>
         </section>
-
-        <section className="min-h-screen bg-cover bg-[url('../../assets/images/page-3-background.svg')] bg-no-repeat bg-left-top bg-green-950">
-          <div className="p-12 py-40 w-full flex flex-col items-center justify-center">
-            <h1 className="float-right pr-60 font-bold text-6xl text-zinc-300 geist-reg">
+        {/**slide 1 */}
+        <section className="min-h-screen bg-cover bg-[url('../../assets/images/page-3-background.svg')] bg-no-repeat bg-left-top bg-green-950 flex flex-col items-center justify-center">
+          <div className="w-full flex flex-col items-end justify-center bg-red-500">
+            <h1 className="font-bold text-6xl text-white geist-reg">
               "Grow your community's tree."
             </h1>
-            <div className="pb-5 max-w-full">
-              <p className="py-2 float-right text-xl text-zinc-300 geist-reg">
+            <div className="max-w-full">
+              <p className="text-xl text-white geist-reg">
                 A new way to engage with your community and better
                 <br /> the Earth together, one trash bag at a time.
               </p>
