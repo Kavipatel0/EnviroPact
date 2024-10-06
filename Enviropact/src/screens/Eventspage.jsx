@@ -2,11 +2,12 @@ import React from "react";
 import "./Eventspage.css"
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
-import { Button, Input} from "antd";
+import { Button, Input, Modal } from "antd";
 import { signInWithGoogle } from "../auth/authService";
 import  { useState, useEffect } from "react";
 import logo from "../assets/Logo.png";
 import EventCard from "../components/EventCard";
+import CreateEventBtn from "../components/CreateEventBtn";
 
 const { Search } = Input;
 
@@ -46,7 +47,6 @@ function Eventspage() {
   };
 
     
-
   return (
     <div>
       <div id="eventspage-navbar">
@@ -77,9 +77,7 @@ function Eventspage() {
                 onSearch={onSearch}
                 style={{width: "40%", minWidth: "300px"}}
             />
-            <Button type="primary" id="create-event-btn" >
-                Create Event
-            </Button>
+            <CreateEventBtn/>
         </div>
         <div id="eventspage-events-wrapper">
           <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
@@ -88,7 +86,6 @@ function Eventspage() {
           <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
           <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
           <EventCard title="Beach Cleanup" organization="Ocean Conservancy" description="Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach! Join us for a beach cleanup at Ocean Beach!" location="Ocean Beach, San Francisco, CA" date="10/30/2021" time="10:00 AM" rsvpCount={10} />
-
         </div>
     </div>
   );
