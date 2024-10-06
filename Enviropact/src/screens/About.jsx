@@ -77,7 +77,7 @@ function About() {
                 <Card 
                   className="bg-lime-200"
                   style={{ 
-                    width: 500, 
+                    width: 425, 
                     borderStyle: "solid"}}>
                   <img src="../../assets/images/stanley.jpg" className="object-cover w-full"></img>
                   <h2 className="pt-6 flex justify-center text-4xl text-lime-800 font-bold geist-reg">Stanley Ke</h2>
@@ -111,9 +111,9 @@ function About() {
               <Card 
                   className="bg-lime-100"
                   style={{ 
-                    width: 500, 
+                    width: 425, 
                     borderStyle: "solid"}}>
-                <img src="../../assets/images/placeholder.png" className="object-cover w-full"></img>
+                <img src="../../assets/images/logan.jpg" className="object-cover w-full"></img>
                 <h2 className="pt-6 flex justify-center text-4xl text-lime-800 font-bold geist-reg">Logan Bjork</h2>
                 {/* <p className="p-2 flex justify-center text-lg geist-reg">Placeholder</p> */}
                 <p className="pt-2 text-zinc-600 flex justify-center text-2xl geist-reg">Frontend</p>
@@ -162,7 +162,7 @@ function About() {
                 <Card 
                   className="bg-lime-100"
                   style={{ 
-                    width: 500, 
+                    width: 425, 
                     borderStyle: "solid"}}>
                   <img src="../../assets/images/adrian.jpg" className="object-cover w-full"></img>
                   <h2 className="pt-6 flex justify-center text-4xl text-lime-800 font-bold geist-reg">Adrian Moreno</h2>
@@ -197,7 +197,7 @@ function About() {
                 <Card 
                   className="bg-lime-200"
                   style={{ 
-                    width: 500, 
+                    width: 425, 
                     borderStyle: "solid"}}>
                   <img src="../../assets/images/kavi.jpg" className="object-cover w-full"></img>
                   <h2 className="pt-6 flex justify-center text-4xl text-lime-800 font-bold geist-reg">Kavi Patel</h2>
@@ -241,17 +241,21 @@ function About() {
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">How It's Made</h2>
           <p className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg">
-            We built Enviro-pact using the React.js framework, Tailwind CSS, and the AntDesign library. WRITE MORE
+            For our front end, we built Enviro-pact using React.js, Tailwind CSS, and the AntDesign and Framer Motion libraries.
           </p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">Challenges</h2>
           <p className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg">
-            One of our main challenges was using Git. What should have been a relatively simple process led to a lot of merge conflicts, resulting in a handful of branch resets. WRITE MORE
+            One of our main challenges was using Git. 
+            What should have been a relatively simple process led to a lot of merge conflicts, resulting in a handful of branch resets. 
+            WRITE MORE
           </p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">What We Learned</h2>
           <p className="pt-1 p-8 text-2xl text-zinc-600 flex justify-center geist-reg">
-            Placeholder Paragraph Text
+            This having been our first hackathon, we all learned a lot individually. 
+            Depending on the member, it was a new language, library, or database.
+            WRITE MORE
           </p>
         </div>
       </section>
