@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-import { useState } from "react";
-import { Button } from "antd";
-import { Card } from "antd";
-=======
 import React from "react";
 import { Button, Card } from "antd";
 
@@ -11,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import { signInWithGoogle } from "../auth/authService";
 import { useState, useEffect } from "react";
 import { ArrowRight } from "lucide-react";
->>>>>>> origin
 
 function Homepage() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -45,7 +39,7 @@ function Homepage() {
   };
 
   const handleAbout = () => {
-    navigate("/About");
+    navigate("/about");
   };
 
   return (
