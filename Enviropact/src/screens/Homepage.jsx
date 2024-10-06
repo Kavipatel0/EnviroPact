@@ -38,15 +38,22 @@ function Homepage() {
     navigate("/events");
   };
 
+  const navigateHome = () => {
+    navigate("/home");
+  };
+
   return (
     <>
       <div>
         <nav className="bg-transparent flex justify-between items-center px-20 py-4 z-10">
           <ul className="flex items-center justify-center">
-            <li>
+            <li
+              onClick={navigateHome}
+              className="flex items-center justify-center text-lg text-black geist-reg hover:cursor-pointer"
+            >
               <img src="../../assets/images/tree-icon.svg" className="px-2" />
+              <p>Enviro-Pact</p>
             </li>
-            <li className="text-lg text-black geist-reg">Enviro-Pact</li>
           </ul>
           {!isSignedIn && (
             <Button
