@@ -1,33 +1,42 @@
-#event-card{
-    width: 700px;
+#event-card {
+    max-width: 100%; /* Allow the card to stretch to 100% of its container */
+    min-width: 700px; /* Prevent the card from getting too narrow */
+    width: 60%; /* Set the initial width to 80% */
+    margin: 0 auto; /* Center the card horizontally */
 }
 
 #event-card-wrapper {
-    width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between; /* Ensure space between the columns */
+    gap: 10px; /* Add a small gap between columns */
+    width: 100%; /* Full width for the wrapper */
 }
 
 #event-info {
-    width: 80%;
+    flex-grow: 1; /* Allow event info to grow and take available space */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+#event-info-body {
+    display: flex;
+    flex-direction: column;
+}
+
+#card-title {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 #card-organization {
     opacity: 0.5;
 }
 
-
-#card-title {
-    font-size: 20px;
-}
-
 #card-description {
     margin-bottom: 10px;
 }
-
 
 #card-footer {
     display: flex;
@@ -39,25 +48,34 @@
     margin-right: 30px;
 }
 
-#event-info-body {
-}
-
 #event-attend {
     display: flex;
-    align-items: flex-end;
     flex-direction: column;
     justify-content: space-between;
-    width: 20%;
-    gap: 5px;
-
+    align-items: flex-end;
+    min-width: 150px; /* Set a minimum width for the attendee section */
+    max-width: 200px; /* Set a max width to control stretching */
+    gap: 10px; /* Add space between elements in the attendance section */
 }
 
 #card-rsvpCount {
     display: flex;
     align-items: center;
+    gap: 5px;
 }
 
 #event-join-btn {
-    width: 100px;
+    width: 100px; /* Ensure a consistent width for the join button */
 }
 
+#event-delete-btn {
+    width: 100px; /* Ensure a consistent width for the delete button */
+}
+
+#card-date {
+    margin-left: 5px; /* Add space between icon and date text */
+}
+
+#card-time {
+    margin-left: 5px; /* Align time nicely with the date */
+}

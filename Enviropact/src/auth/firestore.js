@@ -107,7 +107,7 @@ export const addUserToEvent = async (eventID, userID) => {
       await updateDoc(event, {
         rsvpCount: updatedArr.length
       });
-      console.log("Updated usersAttending")
+      console.log("Updated usersAttending EPINIOWDBIOEBFUEUBF")
     } else {
       console.log("User is already attending this event")
     }

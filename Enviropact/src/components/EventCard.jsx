@@ -7,6 +7,7 @@ import { addUserToEvent, removeEvent, removeUserFromEvent, removeEventFromUser }
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../auth/firebase";
 import  EditEventBtn from "../components/EditEventBtn";
+import EventInfoCard from "../components/ViewEventBtn";
 
 import "./EventCard.css";
 
@@ -98,8 +99,6 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
   //   setIsOwner(false); // User is not the owner of the post
   // }
 
-  
-
   return (
     <Card id="event-card">
       <div id="event-card-wrapper">
@@ -109,20 +108,18 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
             <p id="card-organization">{organization}</p>
             <p id="card-description">{description}</p>
           </div>
-          <div id="card-footer">
-            <MapPin style={{ width: "20px" }} />
-            <p id="card-location">{location}</p>
-            <CalendarDays style={{ width: "20px" }} />
-            <p id="card-date">{date}</p>
-            <p id="card-time">at {time}</p>
-          </div>
+          
         </div>
         <div id="event-attend">
-          <p id="card-rsvpCount">
-            <Users style={{ width: "20px" }} /> {rsvpCount}
-          </p>
-          {isOwner && isSignedIn && (
-            <EditEventBtn
+      <div className="flex justify-between items-center gap-4 ">
+        {/* RSVP Count */}
+        
+        <div className="flex items-center gap-1">
+          <Users style={{ width: "20px" }} />
+          <p id="card-rsvpCount">{rsvpCount}</p>
+        </div>
+        {isSignedIn && isOwner && (
+          <EventInfoCard
             passedUniqueId={uniqueId}
             passedTitle={title}
             passedOrganization={organization}
@@ -130,16 +127,68 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
             passedLocation={location}
             passedDate={date}
             passedTime={time}
+            passedRsvpCount={rsvpCount}
+          />
+        )}
 
-            onEventUpdated={fetchEvents} // Function to call after updating
-            postNotification={postNotification}
+        {/* Event Details Button */}
+        
+      </div>
 
+      <div className="flex gap-4 mt-2">
+        
 
+        
+      </div>
+    </div>
+    
+      </div>
+      <div id="card-footer" className="flex flex-row justify-between mt-2">
+        <div className="flex">
+            <MapPin style={{ width: "20px" }} />
+            <p id="card-location">{location}</p>
+            <CalendarDays style={{ width: "20px" }} />
+            <p id="card-date">{date} at {time}</p>
+
+        </div>
+        <div className="flex gap-4">
+        {!isOwner && hasJoinedEvent && isSignedIn && (
+          <Button
+            id="event-join-btn"
+            type="primary"
+            color="danger"
+            variant="dashed"
+            onClick={handleLeaveEvent}
+          >
+            Leave Event
+          </Button>
+        )}
+        
+        {!isOwner && !hasJoinedEvent && isSignedIn && (
+          <Button
+            id="event-join-btn"
+            type="primary"
+            onClick={handleJoinEvent}
+          >
+            Join Event
+          </Button>
+        )}
+        {isOwner && isSignedIn && (
+          <>
+            <EditEventBtn
+              passedUniqueId={uniqueId}
+              passedTitle={title}
+              passedOrganization={organization}
+              passedDescription={description}
+              passedLocation={location}
+              passedDate={date}
+              passedTime={time}
+              onEventUpdated={fetchEvents} 
+              postNotification={postNotification}
             >
               Edit Post
             </EditEventBtn>
-          )}
-          {isOwner && isSignedIn && (
+
             <Button
               id="event-delete-btn"
               type="primary"
@@ -149,29 +198,10 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
             >
               Delete Post
             </Button>
-          )}
-
-          {!isOwner && hasJoinedEvent && isSignedIn && (
-            <Button
-              id="event-join-btn"
-              type="primary"
-              color="danger"
-              variant="dashed"
-              onClick={handleLeaveEvent} // Call leave event function
-            >
-              Leave Event
-            </Button>
-          )}
-          {!isOwner && !hasJoinedEvent && isSignedIn && (
-            <Button
-              id="event-join-btn"
-              type="primary"
-              onClick={handleJoinEvent} // Call join event function
-            >
-              Join Event
-            </Button>
-          )}
+          </>
+        )}
         </div>
+
       </div>
     </Card>
   );

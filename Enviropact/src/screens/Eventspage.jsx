@@ -22,6 +22,12 @@ function Eventspage() {
   const [events, setEvents] = useState([]); // State for events
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [eventsUserIsIn, setEventsUserIsIn] = useState([]);
+  const [eventsUserIsNotIn, setEventsUserIsNotIn] = useState([]);
+  const [eventsSearched, setEventsSearched] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+
+
 
   const auth = getAuth();
 
@@ -53,32 +59,76 @@ function Eventspage() {
 
 
   
-const fetchEvents = async () => {
-  setLoading(true);
-  try {
-    const fetchedEvents = await getEvents();
+  const fetchEvents = async () => {
+    setLoading(true);
+  
+    try {
+      const fetchedEvents = await getEvents();
+  
+      const auth = getAuth();
+      const currentUser = auth.currentUser;
+      const currentUserId = currentUser ? currentUser.uid : null;
+  
+      const sortedEvents = fetchedEvents.sort((a, b) => {
+        const dateTimeA = moment(`${a.date} ${a.time}`, 'YYYY-MM-DD h:mm A').toDate();
+        const dateTimeB = moment(`${b.date} ${b.time}`, 'YYYY-MM-DD h:mm A').toDate();
+        return dateTimeA - dateTimeB; // Ascending order
+      });
+  
+      const eventsUserIsIn = [];
+      const eventsUserIsNotIn = [];
 
-    // Sort events based on date and time
-    const sortedEvents = fetchedEvents.sort((a, b) => {
-      // Parse the date and time
-      const dateTimeA = moment(`${a.date} ${a.time}`, 'YYYY-MM-DD h:mm A').toDate();
-      const dateTimeB = moment(`${b.date} ${b.time}`, 'YYYY-MM-DD h:mm A').toDate();
-
-      // Compare the two date-time values
-      return dateTimeA - dateTimeB; // Ascending order
-    });
-
-    setEvents(sortedEvents);
-  } catch (err) {
-    setError(err);
-  } finally {
-    setLoading(false);
-  }
-};
+      // compare all the events title,
+      // if search input is a substring of tittle
+      // add to eventsSearched
+      
+    
+  
+      sortedEvents.forEach((event) => {
+        if (event.usersAttending?.includes(currentUserId)) {
+          eventsUserIsIn.push(event); // User is attending this event
+        } else if (!event.usersAttending?.includes(currentUserId)) {
+          eventsUserIsNotIn.push(event); // User is not attending this event
+        }
+      });
+  
+      // You can save the two categories of events into two different state variables
+      setEventsUserIsIn(eventsUserIsIn);
+      setEventsUserIsNotIn(eventsUserIsNotIn);
+  
+    } catch (err) {
+      setError(err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
 useEffect(() => {
   fetchEvents(); // Fetch events on component mount
 }, []); // Empty dependency array ensures it only runs on mount
+
+  const handleSearchEvent = async () => {
+    const fetchedEvents = await getEvents();
+    const sortedEvents = fetchedEvents.sort((a, b) => {
+      const dateTimeA = moment(`${a.date} ${a.time}`, 'YYYY-MM-DD h:mm A').toDate();
+      const dateTimeB = moment(`${b.date} ${b.time}`, 'YYYY-MM-DD h:mm A').toDate();
+      return dateTimeA - dateTimeB; // Ascending order
+    });
+
+    console.log("HJSDBFHSBFSBHJLDFBSDHBF SDFBJSDBFBHSDJBFHSDFJSDBHJFBSDJHFBSDJHFBJHSDFB");
+    console.log("input is:", searchInput);
+
+    const eventsSearched = sortedEvents.filter((event) => {
+      console.log("event title is:", event.title);
+      const title = event.title?.toLowerCase() || ""; // Default to empty string if undefined
+      return title.includes(searchInput.toLowerCase());
+    });
+
+    if (searchInput != "") {
+      setEventsSearched(eventsSearched);
+    }
+    console.log("EVENTS SEARCHED", eventsSearched);
+  }
 
   const handleSignIn = async () => {
     try {
@@ -159,17 +209,20 @@ useEffect(() => {
                   borderColor: "rgb(190, 242, 100)",
                   color: "black",
                 }}
+                onClick={handleSearchEvent}
               >
                 Search
               </Button>
             }
             size="large"
             onSearch={() => {
-              alert("BELLO");
+              console.log("CLICKED SEARCHHHHHHHH");
             }}
             style={{
               width: 350,
             }}
+            onChange={(e) => setSearchInput(e.target.value)}
+          
           />
           {isSignedIn && (
             <CreateEventBtn
@@ -183,11 +236,23 @@ useEffect(() => {
               }}
               onEventCreated={fetchEvents} // Pass fetchEvents as a prop
               postNotification = {openNotification}
+              fetchEvents={fetchEvents}
             />
           )}
         </div>
         <div className="flex flex-col gap-4">
-          {events.map((event) => (
+        {eventsSearched.length > 0 && (
+          <Divider 
+            orientation="middle" 
+            style={{
+              color: "white",
+              borderColor: "white"
+            }}>
+            Searched Events
+          </Divider>
+        )}
+
+          {eventsSearched.map((event) => (
             <EventCard 
               key={event.id} 
               title={event.title} 
@@ -201,7 +266,62 @@ useEffect(() => {
               owner={event.owner}
               fetchEvents={fetchEvents}
               postNotification = {openNotification}
+            />
+          ))}
 
+        {eventsUserIsIn.length > 0 && (
+          <Divider 
+            orientation="middle" 
+            style={{
+              color: "white",
+              borderColor: "white"
+            }}>
+            Joined Events
+          </Divider>
+        )}
+
+          {eventsUserIsIn.map((event) => (
+            <EventCard 
+              key={event.id} 
+              title={event.title} 
+              organization={event.organization} 
+              description={event.description} 
+              location={event.location} 
+              date={event.date} 
+              time={event.time} 
+              rsvpCount={event.rsvpCount} 
+              uniqueId={event.id}
+              owner={event.owner}
+              fetchEvents={fetchEvents}
+              postNotification = {openNotification}
+            />
+          ))}
+
+          {eventsUserIsNotIn.length > 0 && (
+            <Divider 
+              orientation="middle" 
+              style={{
+                color: "white",
+                borderColor: "white"
+              }}>
+              Future Events
+            </Divider>
+          )}
+
+          {eventsUserIsNotIn.map((event) => (
+            <EventCard 
+              key={event.id} 
+              title={event.title} 
+              organization={event.organization} 
+              description={event.description} 
+              location={event.location} 
+              date={event.date} 
+              time={event.time} 
+              rsvpCount={event.rsvpCount} 
+              uniqueId={event.id}
+              owner={event.owner}
+              fetchEvents={fetchEvents}
+              postNotification = {openNotification}
             />
           ))}
         </div>
