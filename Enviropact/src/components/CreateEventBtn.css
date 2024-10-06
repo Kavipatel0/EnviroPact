@@ -1,0 +1,11 @@
+.ant-input {
+    padding: 5px; /* Add padding */
+    border: 1px solid #d9d9d9; /* Default border color */
+    border-radius: 4px; /* Rounded corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: border-color 0.3s, box-shadow 0.3s; /* Transition for hover effect */
+}
+
+.input-title {
+    margin-top: 10px;
+}

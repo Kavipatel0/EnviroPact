@@ -1,0 +1,49 @@
+#event-card{
+    width: 50%;
+    min-width: 500px;
+}
+
+#event-card-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+#event-info {
+    width: 80%;
+}
+
+#card-organization {
+    opacity: 0.5;
+}
+
+
+#card-footer {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#card-location {
+    margin-right: 30px;
+}
+
+#event-attend {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 20%;
+    gap: 5px;
+
+}
+
+#card-rsvpCount {
+    display: flex;
+    align-items: center;
+}
+
+#event-join-btn {
+    width: 100px;
+}
+
