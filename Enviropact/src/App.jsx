@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+import { useState } from "react";
+import "./App.css";
+import Homepage from "./screens/Homepage";
+import About from "./screens/About";
+=======
 // App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -7,6 +13,11 @@ import About from './screens/About';
 
 function App() {
   return (
+<<<<<<< HEAD
+    <>
+      <About></About>
+    </>
+=======
     <Router>
       <Routes>
         <Route path="/" element={<Homepage />} />
@@ -14,6 +25,7 @@ function App() {
         <Route path="/events" element={<Eventspage />} />
       </Routes>
     </Router>
+>>>>>>> origin
   );
 }
 
