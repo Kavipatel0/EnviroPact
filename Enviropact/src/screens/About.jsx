@@ -28,7 +28,7 @@ function About() {
             </ul>
         </nav>
 
-        <section className="p-10 bg-white-100">
+        <section className="bg-white-100">
           <div className="p-12 py-4 max-w-full">
             <h1 className="font-bold text-center text-black text-6xl geist-reg">Meet the Team</h1>
             <p className="p-8 text-2xl flex justify-center geist-reg">Team SLAK (this is placeholder text)</p>
