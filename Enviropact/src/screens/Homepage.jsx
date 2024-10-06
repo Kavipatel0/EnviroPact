@@ -34,13 +34,13 @@ function Homepage() {
           {/*Hero Page */}
           <section className="min-h-screen bg-[url('../../assets/images/Background.svg')] bg-cover bg-no-repeat bg-right-bottom">
             <div className="p-12 py-40 max-w-full">
-              <h1 className="font-bold text-6xl text-zinc-300 geist-reg">
+              <h1 className="font-bold text-8xl text-zinc-300 geist-reg">
                 Preserve your pact
                 <br />
                 with the Earth.
               </h1>
-              <div className="pb-5 text-lg max-w-full">
-                <p className="text-lime-500 text-base geist-reg">
+              <div className="pb-5 max-w-full">
+                <p className="py-2 text-xl text-lime-500 text-base geist-reg">
                   A new way to engage with your community and better
                   <br /> the Earth together, one trash bag at a time.
                 </p>
@@ -52,6 +52,20 @@ function Homepage() {
               >
                 Search Events →
               </Button>
+            </div>
+          </section>
+          
+          <section className="min-h-screen bg-[url('../../assets/images/Background2.svg')] bg-cover bg-no-repeat bg-right-bottom">
+            <div className="p-12 py-40 max-w-full">
+              <h1 className="float-right pr-60 font-bold text-6xl text-zinc-300 geist-reg">
+                "Grow your community's tree."
+              </h1>
+              <div className="pb-5 max-w-full">
+              <p className="py-2 float-right text-xl text-zinc-300 text-base geist-reg">
+                A new way to engage with your community and better
+                <br /> the Earth together, one trash bag at a time.
+              </p>
+              </div>
             </div>
           </section>
         </body>
