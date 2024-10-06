@@ -4,8 +4,9 @@ import { Button, Card } from "antd";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 import { signInWithGoogle } from "../auth/authService";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 function Homepage() {
   const [isSignedIn, setIsSignedIn] = useState(false);
@@ -42,11 +43,20 @@ function Homepage() {
     navigate("/home");
   };
 
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
+
   return (
     <>
       <div>
         <nav
-          className="bg-green-950 sticky top-0 flex justify-between items-center px-20 py-4 z-10"
+          className="sticky z-50 top-0 flex justify-between items-center px-20 py-4"
           style={{ backgroundColor: "rgb(0, 51, 16)" }}
         >
           <ul className="flex items-center justify-center">
@@ -71,9 +81,46 @@ function Homepage() {
         </nav>
 
         {/*Hero Page */}
-        <section className="min-h-screen bg-[url('../../assets/images/hero-home-background.svg')] bg-cover bg-no-repeat bg-right-bottom">
-          <div className="flex flex-col px-20 py-32 max-w-full gap-4">
-            <h1 className="font-bold text-6xl text-zinc-300 geist-reg leading-tight">
+        <section
+          className="min-h-screen w-full flex flex-col items-start justify-end"
+          style={{}}
+          ref={ref}
+        >
+          {/* <motion.h1
+            style={{ y: textY }}
+            className="font-bold text-6xl text-red-500 geist-reg leading-tight z-10 relative"
+          >
+            Preserve your pact with our Earth. Preserve your pact with our
+            Earth. Preserve your pact with our Earth. Preserve your pact with
+            our Earth.Preserve your pact with our Earth. Preserve your pact with
+            our Earth. Preserve your pact with our Earth. Preserve your pact
+            with our Earth.Preserve your pact with our Earth. Preserve your pact
+            with our Earth. Preserve your pact with our Earth. Preserve your
+            pact with our Earth.Preserve your pact with our Earth. Preserve your
+            pact with our Earth. Preserve your pact with our Earth. Preserve
+            your pact with our Earth.Preserve your pact with our Earth. Preserve
+            your pact with our Earth. Preserve your pact with our Earth.
+            Preserve your pact with our Earth.
+          </motion.h1>
+          <motion.div
+            className="absolute inset-0 z-0"
+            style={{
+              backgroundImage: `url(../../assets/images/mountains-full.svg)`,
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+              y: backgroundY,
+            }}
+          />
+          <motion.div
+            className="absolute inset-0 z-20"
+            style={{
+              backgroundImage: `url(../../assets/images/mountains-subtracted.svg)`,
+              backgroundPosition: "bottom",
+              backgroundSize: "cover",
+            }}
+          /> */}
+          <div className="pl-20 min-h-screen w-full bg-cover bg-[url('../../assets/images/hero-home-background.svg')] bg-no-repeat bg-right-bottom bg-green-950 flex flex-col pt-20">
+            <h1 className="font-bold text-6xl text-white geist-reg leading-tight">
               Preserve your pact
               <br />
               with the Earth.
@@ -96,7 +143,7 @@ function Homepage() {
         </section>
 
         {/** second page */}
-        <section className="pt-10 bg-white-100">
+        <section className="min-h-screen pt-10 bg-white z-50">
           <div className="flex flex-col justify-center items-center p-5 py-4 max-w-full">
             <h1 className="font-bold text-center text-black text-6xl geist-reg">
               Upcoming Events in Gainesville, FL
@@ -222,19 +269,10 @@ function Homepage() {
             </div>
           </div>
         </section>
+
         {/**slide 1 */}
         <section className="min-h-screen bg-cover bg-[url('../../assets/images/page-3-background.svg')] bg-no-repeat bg-left-top bg-green-950 flex flex-col items-center justify-center">
-          <div className="w-full flex flex-col items-end justify-center bg-red-500">
-            <h1 className="font-bold text-6xl text-white geist-reg">
-              "Grow your community's tree."
-            </h1>
-            <div className="max-w-full">
-              <p className="text-xl text-white geist-reg">
-                A new way to engage with your community and better
-                <br /> the Earth together, one trash bag at a time.
-              </p>
-            </div>
-          </div>
+          <div className="flex items-center justify-center"></div>
         </section>
       </div>
     </>
