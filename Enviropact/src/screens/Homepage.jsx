@@ -1,12 +1,10 @@
-import { useState } from "react";
+import React from "react";
 import { Button } from "antd";
 
 function Homepage() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <div className="">
+      <div>
         <nav className="bg-transparent flex justify-between items-center px-20 py-5 z-10">
           <ul className="flex items-center justify-center space-x-5">
             <li>
