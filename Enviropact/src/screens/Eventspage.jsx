@@ -37,7 +37,7 @@ function Eventspage() {
         {/*Searchbar*/}
         <div className="flex items-center gap-4">
           <Search
-            placeholder="input search text"
+            placeholder="search an event"
             allowClear
             enterButton={
               <Button
@@ -60,7 +60,7 @@ function Eventspage() {
           />
           <Button
             size="large"
-            className=""
+            className="flex items-center"
             variant="filled"
             style={{
               backgroundColor: "rgb(190, 242, 100)",
@@ -69,6 +69,11 @@ function Eventspage() {
             }}
           >
             Create Event
+            <img
+              className="w-5"
+              src="../../assets/icons/calendar-icon.svg"
+              alt="calendar icon"
+            />
           </Button>
         </div>
       </div>
