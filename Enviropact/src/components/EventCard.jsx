@@ -37,7 +37,7 @@ const EventCard = ({ title, organization, description, location, date, time, rsv
         const arr = data["usersAttending"];
         console.log("User idddddddd:", user.uid);
         console.log("ARRAYYYY: ", arr);
-        if (arr.includes(user.uid)) {
+        if (arr.includes?.(user.uid)) {
           console.log("User is in event!@!!@@")
           setHasJoinedEvent(true);
           await fetchEvents(); // Trigger re-fetching of events

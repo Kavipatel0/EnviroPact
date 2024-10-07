@@ -263,8 +263,7 @@ function Aboutpage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, ease: "easeIn"}}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-          </motion.p>
+            Upon encountering the theme "Stages of Life," we were reminded of a fragile, helpless sapling—one that possesses the potential to flourish into something truly beautiful but lacks the opportunity to do so. This vision inspired us to champion the preservation of our shared home: the Earth. Together, with the collective efforts of our local communities, we can create a meaningful and lasting impact.          </motion.p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">How It's Made</h2>
           <motion.p 
@@ -272,9 +271,8 @@ function Aboutpage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, ease: "easeIn"}}>
-            For our frontend, we built Enviropact using React.js, Tailwind CSS, and the AntDesign and Framer Motion libraries.
-            
-            For the backend, we utilized JavaScript, Firestore as a database, and Firebase as a BaaS and authenticator. 
+            For our frontend, we built EnviroPact using React.js, Tailwind CSS, and the AntDesign and Framer Motion libraries. For the backend, we utilized JavaScript, Firestore as a database, and Firebase as a BaaS and authenticator.
+
           </motion.p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">Challenges</h2>
@@ -283,8 +281,8 @@ function Aboutpage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, ease: "easeIn"}}>
-            One of our main challenges was using Git. 
-            What should have been a relatively simple process led to a lot of merge conflicts, resulting in a handful of branch resets. 
+            One of our main challenges was using Git, as this was our first time using multiple branches in a project. What should have been a relatively simple process led to a lot of merge conflicts, resulting in several branch resets. Our very limited knowledge on building projects and hackathons also slowed us down, with a lot of the first day being spent on just figuring out a roadmap, and a chunk of the second day being used up on learning brand new tools.
+
           </motion.p>
 
           <h2 className="p-4 text-center text-black text-4xl font-bold geist-reg">What We Learned</h2>
@@ -293,8 +291,8 @@ function Aboutpage() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ duration: 1, ease: "easeIn"}}>
-            This having been our first hackathon, we all learned a lot individually. 
-            Depending on the member, it was a new language, library, or database.
+            With this being the first hackathon for all four of us, we learned so much about what goes into designing and implementing a project and the tools needed to do so. We expanded our toolset as courses do not give you this real-world experience, and we now have a better understanding going into future projects.
+
           </motion.p>
         </div>
       </section>
