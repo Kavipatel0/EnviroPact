@@ -8,6 +8,8 @@ import EventCard from "../components/EventCard";
 import CreateEventBtn from "../components/CreateEventBtn";
 import { getEvents } from "../auth/firestore";
 import moment from 'moment';
+import { motion, useScroll, useTransform} from "framer-motion"; 
+
 
 
 import { Divider, notification, Space } from 'antd';
@@ -30,6 +32,8 @@ function Eventspage() {
 
 
   const auth = getAuth();
+  const navigate = useNavigate();
+
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -148,16 +152,35 @@ useEffect(() => {
   };
 
   return (
-    <div>
-      <nav className="bg-transparent flex justify-between items-center px-10 py-5 z-10">
-        <ul className="flex items-center justify-center space-x-5">
-          <li>
-            <img src="../../assets/images/tree-icon.svg" alt="Tree Icon" />
-          </li>
-          <li className="text-lg text-black geist-reg">Enviro-Pact</li>
-        </ul>
-      
-        {!isSignedIn && (
+    <div className="relative">
+      <div id="navigation-bar" className="flex align-middle justify-center absolute left-0 top-0 w-full">
+      <motion.nav
+          className="w-3/8 px-4 py-4 backdrop-blur-md rounded-md bg-white/50  sticky top-5 flex justify-center items-center z-10 m-5"
+          initial={{ opacity: 0, y: -50 }} // Starting state (invisible and moved up)
+          animate={{ opacity: 1, y: 0 }} // End state (fully visible and back to position)
+          transition={{ duration: 0.3, ease: "easeOut" }} // Animation duration and easing
+        >
+          <ul className="flex items-center justify-center gap-5">
+            <li
+              className="flex items-center justify-center text-lg text-black geist-reg hover:cursor-pointer mr-20"
+            >
+              <img
+                src="../../assets/images/tree-icon.svg"
+                className="px-2 w-10"
+              />
+              <p className="text-green-950" onClick={() => navigate("/")} style={{cursor: "pointer"}}>EnviroPact</p>
+            </li>
+            <li>
+              
+            </li>
+            <li className="hover:text-white">
+              <a onClick={() => navigate("/about")} style={{cursor: "pointer"}}>Contact</a>
+            </li>
+            <li className="hover:text-white">
+              <a onClick={() => navigate("/events")} style={{cursor: "pointer"}}>Events</a>
+            </li>
+            <li>
+            {!isSignedIn && (
           <Button
             type="primary"
             className="text-md text-black geist-reg"
@@ -177,10 +200,14 @@ useEffect(() => {
             Sign Out
           </Button>
         )}
-      </nav>
+            </li>
+          </ul>
+        </motion.nav>
+        </div>
+      
 
       {/* Body */}
-      <div className="bg-green-950 h-full min-h-screen flex flex-col items-center justify-start gap-4 pt-10">
+      <div className="bg-green-950 h-full min-h-screen flex flex-col items-center justify-start gap-4 pt-32">
         <img
           className="w-40"
           src="../../assets/images/hand-with-sapling.svg"
@@ -229,11 +256,7 @@ useEffect(() => {
               size="large"
               className="flex items-center text-sm"
               variant="filled"
-              style={{
-                backgroundColor: "rgb(190, 242, 100)",
-                borderColor: "rgb(190, 242, 100)",
-                color: "black",
-              }}
+              
               onEventCreated={fetchEvents} // Pass fetchEvents as a prop
               postNotification = {openNotification}
               fetchEvents={fetchEvents}
@@ -324,6 +347,9 @@ useEffect(() => {
               postNotification = {openNotification}
             />
           ))}
+          <div className="h-48">
+
+          </div>
         </div>
       </div>
     </div>

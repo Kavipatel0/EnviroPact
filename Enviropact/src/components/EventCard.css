@@ -5,6 +5,11 @@
     margin: 0 auto; /* Center the card horizontally */
 }
 
+.bg-custom-green {
+    background-color: #3f6212;
+    opacity: 0.5;
+}
+
 #event-card-wrapper {
     display: flex;
     flex-direction: row;

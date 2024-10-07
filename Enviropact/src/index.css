@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: geist-reg;
+    src: url(../assets/fonts/GEIST-REGULAR.TTF);
+  }
+  
+  .giest-reg {
+    font-family: geist-reg;
+  }

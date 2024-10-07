@@ -44,9 +44,11 @@ function Homepage() {
         <nav className="bg-transparent flex justify-between items-center px-20 py-5 z-10">
           <ul className="flex items-center justify-center space-x-5">
             <li>
+            <li>
               <img src="../../assets/images/tree-icon.svg" className="px-2" />
             </li>
-            <li className="text-lg text-black geist-reg">Enviro-Pact</li>
+            <li className="text-lg text-black geist-reg">EnviroPact</li>
+            </li>
           </ul>
           {!isSignedIn && (
           <Button

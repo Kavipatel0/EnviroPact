@@ -79,7 +79,14 @@ const CreateEventBtn = ({ onEventCreated, postNotification, fetchEvents }) => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button type="primary" onClick={showModal} 
+      size="large"
+      style={{
+        backgroundColor: "rgb(190, 242, 100)",
+        borderColor: "rgb(190, 242, 100)",
+        color: "black",
+        height: "100%",
+        }}>
         Create Event
       </Button>
       <Modal

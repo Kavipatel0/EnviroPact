@@ -68,7 +68,6 @@ const EventInfoCard = ({ passedUniqueId, passedTitle, passedOrganization, passed
       </Button>
 
       <Modal
-        title={passedTitle}
         open={isModalOpen} // Make sure to use the correct prop (open instead of visible)
         onOk={handleOk}
         onCancel={handleCancel}
@@ -81,6 +80,8 @@ const EventInfoCard = ({ passedUniqueId, passedTitle, passedOrganization, passed
           </Button>,
         ]}
       >
+
+        <strong><h1 style={{fontSize: "20px", paddingBottom: "6px"}}>{passedTitle}</h1></strong>
         <p><strong>Organization:</strong> {passedOrganization}</p>
         <p><strong>Description:</strong> {passedDescription}</p>
 
